@@ -1,0 +1,130 @@
+{
+ "contributed_by": "contributed by babyblueviper1 (CC0)",
+ "description": "Vector 18 with the record token MATCHING: the signed record says the check happened at 12:00 (issued_utc), the criteria token says 12:30, the record token (over this record) says 13:00. Profile 1.2.1 step 5 takes the reference from the covering token (13:00) and says committed first; the record's own signed issue time says the check came first. Proposed rule: reference = the earlier of issued_utc and a covering token's genTime. Expected: no.",
+ "expected": {
+  "criteria_committed_before_check": "no",
+  "criteria_hash": "match",
+  "independence": "independent",
+  "problem_codes": [
+   "CRITERIA_COMMITTED_AFTER_CHECK"
+  ],
+  "receipt_timestamp": "imprint_match",
+  "signature_valid": true,
+  "verdict_recomputed": "pass",
+  "verdict_stated": "pass",
+  "warning_codes": []
+ },
+ "inputs": {
+  "criteria_file_base64": "eyJjcml0ZXJpYSI6W3siaWQiOiJjMSIsInJlcXVpcmVkIjp0cnVlLCJyZXF1aXJlbWVudCI6IlRoZSBmaXJzdCByZXF1aXJlbWVudC4iLCJ0aXRsZSI6IkZpcnN0IHJlcXVpcmVkIGNyaXRlcmlvbiJ9LHsiaWQiOiJjMiIsInJlcXVpcmVkIjp0cnVlLCJyZXF1aXJlbWVudCI6IlRoZSBzZWNvbmQgcmVxdWlyZW1lbnQuIiwidGl0bGUiOiJTZWNvbmQgcmVxdWlyZWQgY3JpdGVyaW9uIn0seyJpZCI6ImMzIiwicmVxdWlyZWQiOmZhbHNlLCJyZXF1aXJlbWVudCI6IkFuIG9wdGlvbmFsIHJlcXVpcmVtZW50LiIsInRpdGxlIjoiT3B0aW9uYWwgY3JpdGVyaW9uIn1dLCJjcml0ZXJpYV9zZXQiOiJleGFtcGxlLWNyaXRlcmlhIiwicmVzdWx0X3ZvY2FidWxhcnkiOlsicGFzcyIsImZhaWwiLCJub3QtZXZhbHVhdGVkIiwiZXJyb3IiXSwidGl0bGUiOiJFeGFtcGxlIGNyaXRlcmlhIGZvciB0ZXN0IHZlY3RvcnMiLCJ2ZXJzaW9uIjoiMSJ9",
+  "criteria_tsr_base64": "MH8wAwIBADB4BgkqhkiG9w0BBwKgazBpAgEDMQAwYgYLKoZIhvcNAQkQAQSgUwRRME8CAQEGAyoDBDAxMA0GCWCGSAFlAwQCAQUABCBEE+mdc9dD17Y6g2LPPUf/ZGybZOOXKy+2mECTyOmt1wIBBxgPMjAyNjA2MDExMjMwMDBa",
+  "keys": {
+   "issuer": "invinoveritas (test vectors)",
+   "keys": [
+    {
+     "alg": "Ed25519",
+     "key_id": "invinoveritas-test-1",
+     "public_key_base64": "UobanW6b2pzE20oRw4r48j/aYWQmvdhZ0pVkbcAh034=",
+     "status": "test"
+    }
+   ]
+  },
+  "receipt": {
+   "receipt": {
+    "canonicalization": "JCS-RFC8785",
+    "client_ref": "test vector",
+    "criteria": {
+     "commitment": "rfc3161",
+     "committed_at": "2026-06-01T12:30:00Z",
+     "id": "example-criteria",
+     "sha256": "4413e99d73d743d7b63a8362cf3d47ff646c9b64e3972b2fb6984093c8e9add7",
+     "version": "1"
+    },
+    "files": {
+     "original": {
+      "bytes": 22,
+      "name": "original.pdf",
+      "pages": 1,
+      "sha256": "4cbaf696bbf09c7f9c08d2fc5cb4e93235d0d9ff94a916b7dd90b91ef057e4be"
+     },
+     "remediated": {
+      "bytes": 23,
+      "name": "delivered.pdf",
+      "pages": 1,
+      "sha256": "b520ef4eb7a0f3e0d725ea92167e4962fe43584c7747b44e0acd4d846eaa4cf8"
+     }
+    },
+    "human_review": {
+     "scope": [
+      "Example review scope"
+     ],
+     "status": "pending"
+    },
+    "independence": "independent",
+    "issued_utc": "2026-06-01T12:00:00Z",
+    "issuer": "Example Checker",
+    "key_id": "invinoveritas-test-1",
+    "notice": "Test vector. Not a real check.",
+    "parties": {
+     "checker": {
+      "key_id": "invinoveritas-test-1",
+      "name": "Example Checker"
+     },
+     "producer": {
+      "key_id": null,
+      "name": "Example Vendor"
+     }
+    },
+    "receipt_id": "EX-0001",
+    "results": [
+     {
+      "finding": "Met.",
+      "id": "c1",
+      "required": true,
+      "result": "pass",
+      "title": "First required criterion"
+     },
+     {
+      "finding": "Met.",
+      "id": "c2",
+      "required": true,
+      "result": "pass",
+      "title": "Second required criterion"
+     },
+     {
+      "finding": "No review recorded.",
+      "id": "c3",
+      "required": false,
+      "result": "not-evaluated",
+      "title": "Optional criterion"
+     }
+    ],
+    "revision": 1,
+    "schema": "trilatic.acceptance-receipt/1.2",
+    "suite": {
+     "digest": "sha-256",
+     "signature": "Ed25519"
+    },
+    "tools": {
+     "profile": "example profile",
+     "validator": "example 1.0"
+    },
+    "verdict": "pass"
+   },
+   "signature": {
+    "alg": "Ed25519",
+    "key_id": "invinoveritas-test-1",
+    "value": "zW+QhcP1o+OWJ00K8mM26igZfzPdB6qczOQXGgaOC4JNv8YMz3UsS1sn+8VnUu2e0FuBW3tTkU7/ycq7PMM3BA=="
+   },
+   "timestamp": {
+    "covers": "sha256 of the canonical receipt object",
+    "digest_sha256": "90f274ff7f7537bf21cece150f0b5965fe6029f9e50b1e57603387be294cf8bb",
+    "gen_time": "20260601120005Z",
+    "status": "granted",
+    "tsa": "test-tsa.invalid",
+    "tsr_file": "receipt.tsr"
+   }
+  },
+  "receipt_tsr_base64": "MH8wAwIBADB4BgkqhkiG9w0BBwKgazBpAgEDMQAwYgYLKoZIhvcNAQkQAQSgUwRRME8CAQEGAyoDBDAxMA0GCWCGSAFlAwQCAQUABCCfjd+9LsZH1NzInygOUF4RoL4OMDZHZw9YaTb6VPDOpAIBBxgPMjAyNjA2MDExMzAwMDBa"
+ },
+ "license": "CC0-1.0"
+}
