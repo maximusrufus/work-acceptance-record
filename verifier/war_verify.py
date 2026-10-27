@@ -611,8 +611,9 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None):
     ts = out["timestamp"]
     cover = ts.get("token_time") if ts.get("tsr") == "match" else None
     issued = b.get("issued_utc")
-    # A stated time that is not a real ISO-8601 UTC time cannot be shown to be before anything: it is answered "no"
-    # with the existing code CRITERIA_COMMITTED_AFTER_CHECK (fail closed). An absent or empty one is simply not stated.
+    # A stated time that step 5 uses and that is not RFC 3339 UTC cannot be shown to be before anything: it is answered
+    # "no" with RECEIPT_TIME_UNREADABLE (profile 1.4.2, fail closed). committed_at is used only when no usable criteria
+    # token supplies the time (otherwise `committed` holds the token time). An absent or empty one is simply not stated.
     committed_ms = _parse_ms(committed) if _present(committed) else None
     issued_ms = _parse_ms(issued) if _present(issued) else None
     malformed = (_present(committed) and committed_ms is None) or (
