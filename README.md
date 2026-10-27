@@ -152,7 +152,7 @@ and changes no outcome:
 
 It prints `AGREE` or `DIFF` per vector and exits non-zero on any disagreement; `--outcome FILE` prints the computed outcome object. It checks token imprints, times and accuracy; the authority signature (step 9) is evaluated when anchors are supplied, from a vector's `inputs.tsa_roots_base64` or `--tsa-roots FILE`. It is offered as a reference for comparison; clean-room verifiers that disagree with it, or with a vector's `expected` object, are the useful result.
 
-The file `verifier/war_verify.py` implements profile 1.4.1. It agrees with vectors 01-59 (59/59) and does not implement the 1.4.2 rules: on vectors 60-87 it disagrees with the `expected` object in most cases and stops with an exception on some. Reports of other verifiers against 60-87 are the useful result.
+The file `verifier/war_verify.py` implements profile 1.4.2 and agrees with all 87 vectors. With `WAR_VERIFY_STRICT=1` an internal error is raised instead of being reported as a refusal.
 
 ## Implementations
 
@@ -165,7 +165,7 @@ implementer's own run file at a fixed commit; the result and the disclosure are 
 | babyblueviper1 | Python, `cryptography` | 01-57 at `c63208d` | 57/57 | [comment in x402-foundation/tsc#4](https://github.com/x402-foundation/tsc/issues/4#issuecomment-6404475210); earlier run, 01-55 at `6b2f730` (55/55): [upstream_vectors_1_4_1_55_run.txt](https://github.com/babyblueviper1/preaction-governance-conformance/blob/bc5c21d/examples/work-acceptance-record-cold/upstream_vectors_1_4_1_55_run.txt) | as in the earlier row: written from the text; reference not opened; `expected` objects visible while the inputs were read |
 | robertolocatelli81-dev | Python | 01-47 at `06d3b94` | 47/47 (441/441 fields) | [results/score_default.txt](https://github.com/robertolocatelli81-dev/work-acceptance-check-omega/blob/56233ab/results/score_default.txt) | written from the text; reference verifiers not opened |
 | actaseal | Python, standard-library Ed25519 | 01-57 and 01-59 | 57/57; 59/59 | [x402-acceptance-check-cold](https://github.com/actaseal/x402-acceptance-check-cold), as posted in x402-foundation/tsc#4 | written from the text; reference verifiers not opened |
-| reference (this repository) | Python standard library | 01-59 | 59/59 (5 of 60-87 agree; see the note under Reference verifier) | `python -I verifier/war_verify.py vectors/*.json` | written with the vectors |
+| reference (this repository) | Python standard library | 01-87 | 87/87 | `python -I verifier/war_verify.py vectors/*.json` | written with the vectors |
 
 The other direction: receipts issued by another checker under its own key (babyblueviper1's invinoveritas checker)
 pass the reference verifier unchanged, with `--tsa-roots` set to the FreeTSA and DigiCert roots of vectors 31 and 32

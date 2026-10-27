@@ -1,6 +1,6 @@
-"""Work-acceptance record verifier, profile 1.4.1 (schema trilatic.acceptance-receipt/1.2).
+"""Work-acceptance record verifier, profile 1.4.2 (schema trilatic.acceptance-receipt/1.2).
 
-Reference verifier using only the Python standard library. It implements Ed25519 (with the profile 1.3 key rule),
+Reference verifier using only the Python standard library. It implements Ed25519 (with the profile 1.3 key rule), canonical-input and strict-time rules of profile 1.4.2 (WAR_VERIFY_STRICT=1 re-raises an internal error instead of refusing),
 JCS (RFC 8785), the RFC 3161 imprint, time and accuracy read from the token's signed TSTInfo, and (profile 1.4)
 the RFC 3161 authority-signature checks, embedded below. No network, no dependencies.
 Usage:  python war_verify.py VECTOR.json [VECTOR.json ...]   -> prints AGREE/DIFF per vector, exit 1 on any DIFF
@@ -9,16 +9,32 @@ Usage:  python war_verify.py VECTOR.json [VECTOR.json ...]   -> prints AGREE/DIF
                                                                 anchors (outcome field tsa_signature; profile 1.4)
 """
 
-import base64
 import datetime
 import hashlib
 import json
+import os
+import re
 import sys
 
 SCHEMA_V1 = "trilatic.acceptance-receipt/1"
 SCHEMA_V11 = "trilatic.acceptance-receipt/1.1"
 SCHEMA_V12 = "trilatic.acceptance-receipt/1.2"
 RESULT_VOCAB = ["pass", "fail", "not-evaluated", "error"]
+
+
+def b64_strict(s):
+    """The single base64 decode path: canonical base64 or ValueError (see tsa_verify.b64_strict)."""
+    return _tsa_module().b64_strict(s)
+
+
+def _b64_or_empty(s):
+    """For optional input blobs (tokens, criteria file, anchors): a non-canonical value is bytes that can match
+    nothing (empty), so it takes the same path as a malformed blob: hash/imprint mismatch, token failed."""
+    try:
+        return b64_strict(s)
+    except ValueError:
+        return b""
+
 
 # ---------------------------------------------------------------- Ed25519 (RFC 8032, verify only)
 P = 2**255 - 19
@@ -218,6 +234,7 @@ def canonical_for(body):
 
 # ---------------------------------------------------------------- RFC 3161 imprint and time (signed TSTInfo)
 
+
 def _accuracy_at(tsr, i):
     if i + 1 >= len(tsr) or tsr[i] != 0x30:
         return None
@@ -239,10 +256,35 @@ def _accuracy_at(tsr, i):
     return ms if any_ else None
 
 
-def _iso_from_gen(g):
-    if len(g) < 14 or not g[:14].isdigit():
+def _fmt_ms(ms):
+    t = datetime.datetime.fromtimestamp(ms // 1000, datetime.timezone.utc).strftime(
+        "%Y-%m-%dT%H:%M:%S"
+    )
+    return f"{t}.{ms % 1000:03d}Z" if ms % 1000 else t + "Z"
+
+
+def _iso_from_gen(g, up=False):
+    """GeneralizedTime to ISO-8601 UTC at millisecond precision, strict DER (RFC 3161 / X.690 11.7):
+    YYYYMMDDHHMMSS[.f*[1-9]]Z. Only 'Z' (no offset), only '.' (not ','), a fraction must be non-empty with no trailing
+    zero, and the calendar must be real (month 1-12, day valid for the month incl. leap years, hour 0-23, minute and
+    second 0-59). Anything else is no usable time (None); this never raises.
+    A fraction is kept (as .mmm, omitted when zero); the sub-millisecond remainder is dropped (round DOWN) or, with
+    up=True, rounds the time UP to the next ms."""
+    try:
+        m = re.fullmatch(r"(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})(?:\.(\d*[1-9]))?Z", g, re.ASCII)
+        if not m:
+            return None
+        y, mo, d, h, mi, sec = (int(x) for x in m.groups()[:6])
+        datetime.datetime(y, mo, d, h, mi, sec)  # ValueError on an impossible date or time (also year 0)
+        base = f"{m[1]}-{m[2]}-{m[3]}T{m[4]}:{m[5]}:{m[6]}"
+        digits = m[7] or ""
+        ms = int((digits + "000")[:3])
+        rem = any(c != "0" for c in digits[3:])
+        if not (up and rem):
+            return f"{base}.{ms:03d}Z" if ms else base + "Z"
+        return _fmt_ms(_ms(base + "Z") + ms + 1)
+    except (ValueError, OverflowError, OSError, TypeError):
         return None
-    return f"{g[0:4]}-{g[4:6]}-{g[6:8]}T{g[8:10]}:{g[10:12]}:{g[12:14]}Z"
 
 
 def tsr_time_for(tsr, digest):
@@ -268,19 +310,129 @@ def tsr_time_for(tsr, digest):
         return {
             "imprint": True,
             "time": _iso_from_gen(tst[4].val.decode("ascii", "replace")),
+            "time_up": _iso_from_gen(tst[4].val.decode("ascii", "replace"), up=True),
             "accuracy_ms": _accuracy_at(acc, 0) if acc else None,
         }
     except (ValueError, IndexError, KeyError, AttributeError):
         return no
 
 
+def _parse_ms(iso):
+    """Epoch ms of 'YYYY-MM-DDTHH:MM:SS[.f{1,3}]Z' with a real calendar date and time, else None. Never raises."""
+    try:
+        m = re.fullmatch(
+            r"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?Z",
+            iso,
+            re.ASCII,
+        )
+        if not m:
+            return None
+        y, mo, d, h, mi, sec = (int(x) for x in m.groups()[:6])
+        t = datetime.datetime(y, mo, d, h, mi, sec, tzinfo=datetime.timezone.utc)
+        return int(t.timestamp()) * 1000 + int(((m[7] or "") + "000")[:3])
+    except (ValueError, OverflowError, OSError, TypeError):
+        return None
+
+
 def _ms(iso):
-    return (
-        datetime.datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ")
-        .replace(tzinfo=datetime.timezone.utc)
-        .timestamp()
-        * 1000
-    )
+    v = _parse_ms(iso)
+    if v is None:
+        raise ValueError("not an ISO-8601 UTC time")
+    return v
+
+
+def _present(x):
+    """A time field that is stated at all: not absent (None) and not the empty string."""
+    return x is not None and x != ""
+
+
+# ---------------------------------------------------------------- structural type guard
+# Every object, array and string the procedure reads must have the type it expects. A record or input of the wrong
+# type is refused (never an exception): vector_outcome gives the step-1 refusal of vector 21; verify_receipt gives
+# "not an acceptance receipt". Mirrored by typedDoc / typedInputs in receipt-core.js.
+_LONE_SURROGATE = re.compile("[" + chr(0xD800) + "-" + chr(0xDFFF) + "]")
+
+
+def _has_lone_surrogate(o):
+    if isinstance(o, str):
+        return bool(_LONE_SURROGATE.search(o))
+    if isinstance(o, list):
+        return any(_has_lone_surrogate(x) for x in o)
+    if isinstance(o, dict):
+        return any(_has_lone_surrogate(k) or _has_lone_surrogate(v) for k, v in o.items())
+    return False
+
+
+def _t_str(x):
+    return x is None or isinstance(x, str)
+
+
+def _t_obj(x):
+    return x is None or isinstance(x, dict)
+
+
+def _typed_party(p):
+    return _t_obj(p) and (p is None or (_t_str(p.get("name")) and _t_str(p.get("key_id"))))
+
+
+def _typed_doc(doc, keyset):
+    """Envelope, keys file and (for schema 1.2) the body fields the checks read."""
+    if not isinstance(doc, dict):
+        return False
+    rc, sg = doc.get("receipt"), doc.get("signature")
+    if not isinstance(rc, dict) or not isinstance(sg, dict):
+        return False
+    if not (_t_str(sg.get("key_id")) and _t_str(rc.get("key_id")) and _t_obj(doc.get("timestamp"))):
+        return False
+    if keyset is not None:
+        if not isinstance(keyset, dict):
+            return False
+        keys = keyset.get("keys")
+        if keys is not None and not (
+            isinstance(keys, list)
+            and all(isinstance(k, dict) and _t_str(k.get("key_id")) for k in keys)
+        ):
+            return False
+    if rc.get("schema") == SCHEMA_V12:
+        parties = rc.get("parties")
+        if not _t_obj(parties):
+            return False
+        if parties is not None and not (
+            _typed_party(parties.get("checker")) and _typed_party(parties.get("producer"))
+        ):
+            return False
+        c = rc.get("criteria")
+        if not _t_obj(c) or (c is not None and not (_t_str(c.get("id")) and _t_str(c.get("version")))):
+            return False
+        results = rc.get("results")
+        if results is not None and not (
+            isinstance(results, list)
+            and all(
+                isinstance(r, dict)
+                and isinstance(r.get("id"), str)
+                and (r.get("required") is None or isinstance(r.get("required"), bool))
+                for r in results
+            )
+        ):
+            return False
+        if not _t_obj(rc.get("human_review")):
+            return False
+    return True
+
+
+def _typed_inputs(vec):
+    if not isinstance(vec, dict) or not isinstance(vec.get("inputs"), dict):
+        return False
+    i = vec["inputs"]
+    if not isinstance(i.get("keys"), dict) or not _typed_doc(i.get("receipt"), i["keys"]):
+        return False
+    for k in ("criteria_file_base64", "criteria_tsr_base64", "receipt_tsr_base64"):
+        if not _t_str(i.get(k)):
+            return False
+    roots = i.get("tsa_roots_base64")
+    if roots is not None and not (isinstance(roots, list) and all(isinstance(r, str) for r in roots)):
+        return False
+    return not _has_lone_surrogate(i)
 
 
 # ---------------------------------------------------------------- record checks
@@ -295,20 +447,89 @@ def overall_verdict(results, human):
     return "pass"
 
 
-def independence_of(parties):
+def _dup_ids(keyset):
+    """key_ids that appear more than once in the keys file: such an id names no single key (fail closed)."""
+    ids = [k.get("key_id") for k in (keyset or {}).get("keys") or []]
+    return {i for i in ids if isinstance(i, str) and ids.count(i) > 1}
+
+
+def _key_of(keyset, kid):
+    """Decoded public key for kid from the keys file (first entry): bytes; None if kid has no entry;
+    False if the entry is not canonical base64 (a rejected key)."""
+    if kid in _dup_ids(keyset):
+        return False
+    for k in (keyset or {}).get("keys") or []:
+        if k.get("key_id") == kid:
+            try:
+                return b64_strict(k.get("public_key_base64"))
+            except ValueError:
+                return False
+    return None
+
+
+def _same_key(keyset, a, b):
+    """True when key_ids a and b are equal, or both resolve through the keys file to the same decoded public key
+    (one key under two ids is one key). The comparison is on decoded bytes, never on the strings."""
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+    ka, kb = _key_of(keyset, a), _key_of(keyset, b)
+    return isinstance(ka, bytes) and ka == kb
+
+
+def _key_bad(keyset, *kids):
+    """A party's key entry that is not canonical base64: its key cannot be compared, so fail closed."""
+    return any(kid and _key_of(keyset, kid) is False for kid in kids)
+
+
+def independence_of(parties, keyset=None, claimed=None):
     chk = (parties or {}).get("checker") or {}
     prod = (parties or {}).get("producer") or {}
     name = str(prod.get("name") or "").strip().lower()
     if not name or name in ("unspecified", "unknown"):
         return "undeclared"
     if name == str(chk.get("name") or "").strip().lower() or (
-        prod.get("key_id") and prod.get("key_id") == chk.get("key_id")
+        _same_key(keyset, prod.get("key_id"), chk.get("key_id"))
     ):
+        return "self-checked"
+    if _key_bad(keyset, prod.get("key_id"), chk.get("key_id")):
+        return "self-checked"  # fail closed: independence cannot be shown against a key that cannot be read
+    if claimed == "independent" and any(
+        kid is not None and (kid == "" or not isinstance(_key_of(keyset, kid), bytes))
+        for kid in (prod.get("key_id"), chk.get("key_id"))
+    ):
+        # An independence claim rests on keys only when a key_id is STATED: a stated key_id must be non-empty and listed
+        # exactly once. An absent or null key_id (a producer does not sign) leaves the claim resting on the names.
         return "self-checked"
     return "independent"
 
 
-def _check_v12(doc, out, criteria_bytes, criteria_tsr):
+def _no_constant(name):
+    raise ValueError("NaN and Infinity are not valid JSON")
+
+
+def _id_pairs(items, cd=None):
+    """Sorted (id, required) pairs, duplicates kept, ids ordered by UTF-16 code units. Ill-typed items raise
+    ValueError (the criteria file could not be read)."""
+    if cd is not None and not isinstance(cd, dict):
+        raise ValueError("criteria file is not an object")
+    if items is None:
+        items = []
+    if not isinstance(items, list):
+        raise ValueError("criteria is not a list")
+    out = []
+    for x in items:
+        if not isinstance(x, dict) or not isinstance(x.get("id"), str):
+            raise ValueError("criterion without a string id")
+        rq = x.get("required")
+        if not (rq is None or isinstance(rq, bool)):
+            raise ValueError("required is not a boolean")
+        out.append((x["id"], bool(rq)))
+    return sorted(out, key=lambda p: (p[0].encode("utf-16-be", "surrogatepass"), p[1]))
+
+
+def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None):
     b = doc["receipt"]
     problems, warnings = set(), set()
     if out.get("key_rejected"):
@@ -317,11 +538,15 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr):
         problems.add("SIGNATURE_INVALID")
     parties = b.get("parties") or {}
     chk, prod = parties.get("checker") or {}, parties.get("producer") or {}
-    if chk.get("key_id") != doc["signature"].get("key_id"):
+    if _key_bad(keyset, chk.get("key_id"), prod.get("key_id")) or _dup_ids(keyset):
+        problems.add("KEY_REJECTED")
+    # compared with the SIGNED key identifier (the one the signing-key lookup uses), never with the unsigned envelope's
+    signed_kid = b["key_id"] if "key_id" in b else doc["signature"].get("key_id")
+    if chk.get("key_id") != signed_kid:
         problems.add("CHECKER_NOT_SIGNER")
-    if chk.get("key_id") and chk.get("key_id") == prod.get("key_id"):
+    if _same_key(keyset, chk.get("key_id"), prod.get("key_id")):
         problems.add("KEY_COLLISION")
-    derived = independence_of(parties)
+    derived = independence_of(parties, keyset, b.get("independence"))
     out["independence"] = b.get("independence")
     if derived != b.get("independence"):
         problems.add("INDEPENDENCE_INCONSISTENT")
@@ -337,7 +562,9 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr):
         problems.add("VERDICT_MISMATCH")
 
     c = b.get("criteria") or {}
-    claimed = str(c.get("sha256") or "").lower()
+    # criteria.sha256 must be exactly 64 lowercase hex digits; anything else (upper case included) can match nothing
+    sha = c.get("sha256")
+    claimed = sha if isinstance(sha, str) and re.fullmatch(r"[0-9a-f]{64}", sha) else ""
     out["criteria_hash"] = "unavailable"
     out["criteria_committed_before_check"] = "unknown"
     if criteria_bytes is not None:
@@ -347,12 +574,11 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr):
             problems.add("CRITERIA_HASH_MISMATCH")
         else:
             try:
-                cd = json.loads(criteria_bytes.decode("utf-8"))
-                want = sorted(
-                    (x.get("id"), bool(x.get("required")))
-                    for x in cd.get("criteria") or []
+                cd = json.loads(
+                    criteria_bytes.decode("utf-8"), parse_constant=_no_constant
                 )
-                got = sorted((r.get("id"), bool(r.get("required"))) for r in results)
+                want = _id_pairs(cd.get("criteria"), cd)
+                got = _id_pairs(results)
                 if (
                     want != got
                     or cd.get("criteria_set") != c.get("id")
@@ -362,34 +588,64 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr):
             except Exception:
                 problems.add("CRITERIA_UNREADABLE")
 
-    committed, commit_acc, token_timed = c.get("committed_at"), 0, False
+    committed, commit_acc, token_timed = c.get("committed_at"), 0, False  # committed: the claim, or the token time
     if criteria_tsr is not None:
-        try:
-            digest = bytes.fromhex(claimed)
-        except ValueError:
-            digest = b"\x00" * 33  # cannot occur in a token
+        # an invalid or absent claimed hash is a digest no token can carry (33 bytes)
+        digest = bytes.fromhex(claimed) if claimed else b"\x00" * 33
         t = tsr_time_for(criteria_tsr, digest)
         if not t["imprint"]:
             problems.add("CRITERIA_TIMESTAMP_MISMATCH")
         elif t["time"]:
-            if c.get("committed_at") != t["time"]:
+            # committed_at is compared to the second; the time used for "before" keeps the exact fraction,
+            # rounded UP to the next ms so a fraction can never make "before" easier
+            if c.get("committed_at") != t["time"][:19] + "Z":
                 problems.add("CRITERIA_TIME_MISMATCH")
-            committed, commit_acc, token_timed = t["time"], t["accuracy_ms"] or 0, True
+            committed, commit_acc, token_timed = (
+                t["time_up"],
+                t["accuracy_ms"] or 0,
+                True,
+            )
     if not token_timed:
         warnings.add("CRITERIA_COMMITMENT_UNVERIFIED")
 
     ts = out["timestamp"]
     cover = ts.get("token_time") if ts.get("tsr") == "match" else None
     issued = b.get("issued_utc")
-    ref = cover if cover and (not issued or _ms(cover) < _ms(issued)) else issued
-    ref_acc = (ts.get("token_accuracy_ms") or 0) if cover and ref == cover else 0
-    if committed and ref:
-        before = _ms(committed) + commit_acc < _ms(ref) - ref_acc
+    # A stated time that is not a real ISO-8601 UTC time cannot be shown to be before anything: it is answered "no"
+    # with the existing code CRITERIA_COMMITTED_AFTER_CHECK (fail closed). An absent or empty one is simply not stated.
+    committed_ms = _parse_ms(committed) if _present(committed) else None
+    issued_ms = _parse_ms(issued) if _present(issued) else None
+    malformed = (_present(committed) and committed_ms is None) or (
+        _present(issued) and issued_ms is None
+    )
+    cover_ms = _parse_ms(cover) if cover else None
+    if cover_ms is not None and (issued_ms is None or cover_ms < issued_ms):
+        ref_ms = cover_ms
+    else:
+        ref_ms = issued_ms
+    ref_acc = (
+        (ts.get("token_accuracy_ms") or 0)
+        if cover_ms is not None and ref_ms == cover_ms
+        else 0
+    )
+    if malformed:
+        out["criteria_committed_before_check"] = "no"
+        problems.add("RECEIPT_TIME_UNREADABLE")
+    elif committed_ms is not None and ref_ms is not None:
+        before = committed_ms + commit_acc < ref_ms - ref_acc
         out["criteria_committed_before_check"] = "yes" if before else "no"
         if not before:
             problems.add("CRITERIA_COMMITTED_AFTER_CHECK")
     out["problem_codes"] = sorted(problems)
     out["warning_codes"] = sorted(warnings)
+
+
+def _key_bytes(entry):
+    """A key that is not canonical base64 is a rejected key (KEY_REJECTED), like one of the wrong length."""
+    try:
+        return b64_strict(entry["public_key_base64"])
+    except (ValueError, KeyError, TypeError):
+        return None
 
 
 def verify_receipt(
@@ -402,7 +658,7 @@ def verify_receipt(
         "warning_codes": [],
     }
     if (
-        not isinstance(doc, dict)
+        not _typed_doc(doc, keyset)
         or not doc.get("receipt")
         or not doc.get("signature")
         or doc["signature"].get("alg") != "Ed25519"
@@ -425,8 +681,9 @@ def verify_receipt(
     )
     if signed_key_id != doc["signature"].get("key_id"):
         out["signature"] = False
-    elif entry and not key_is_canonical_prime_order(
-        base64.b64decode(entry["public_key_base64"])
+    elif entry and (
+        signed_key_id in _dup_ids(keyset)
+        or not key_is_canonical_prime_order(_key_bytes(entry))
     ):
         out["signature"], out["key_rejected"] = False, True
     elif not entry:
@@ -434,9 +691,9 @@ def verify_receipt(
     else:
         try:
             out["signature"] = verify_ed25519(
-                base64.b64decode(doc["signature"]["value"]),
+                b64_strict(doc["signature"]["value"]),
                 body,
-                base64.b64decode(entry["public_key_base64"]),
+                _key_bytes(entry),
             )
         except Exception:
             out["signature"] = False
@@ -456,7 +713,7 @@ def verify_receipt(
                 token_accuracy_ms=r["accuracy_ms"] if r["imprint"] else None,
             )
     if doc["receipt"].get("schema") == SCHEMA_V12:
-        _check_v12(doc, out, criteria_bytes, criteria_tsr)
+        _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset)
     elif out.get("key_rejected"):
         out["problem_codes"] = ["KEY_REJECTED"]
     elif not out["signature"]:
@@ -482,8 +739,26 @@ RSASSA-PSS and other curves/algorithms are reported as "unsupported".
 import base64
 import hashlib
 import json
+import re
 import sys
 from datetime import datetime, timezone
+
+_B64_RE = re.compile(r"[A-Za-z0-9+/]*={0,2}")
+
+
+def b64_strict(s):
+    """Canonical base64 only (the one decode path of both verifiers; mirrors fromB64 in receipt-core.js): alphabet
+    A-Z a-z 0-9 + /, '=' padding required (length % 4 == 0), no whitespace, and re-encoding the decoded bytes must give
+    back the input exactly (so non-zero trailing bits are refused). Anything else raises ValueError."""
+    if not isinstance(s, str) or len(s) % 4 != 0 or not _B64_RE.fullmatch(s):
+        raise ValueError("non-canonical base64")
+    try:
+        raw = base64.b64decode(s, validate=True)
+    except Exception as e:
+        raise ValueError("non-canonical base64") from e
+    if base64.b64encode(raw).decode("ascii") != s:
+        raise ValueError("non-canonical base64")
+    return raw
 
 MAX_DEPTH = 6
 
@@ -1257,7 +1532,7 @@ def load_roots(path):
             cur = []
         elif line.startswith("-----END CERTIFICATE"):
             if cur is not None:
-                out.append(base64.b64decode("".join(cur)))
+                out.append(b64_strict("".join(cur)))
             cur = None
         elif cur is not None:
             cur.append(line.strip())
@@ -1309,14 +1584,14 @@ def tsa_tokens_present(i):
     envelope says one was granted and it is supplied. Nothing is reported for an absent token."""
     present = {}
     if i.get("criteria_tsr_base64"):
-        present["criteria"] = base64.b64decode(i["criteria_tsr_base64"])
+        present["criteria"] = _b64_or_empty(i["criteria_tsr_base64"])
     env_ts = (
         (i["receipt"].get("timestamp") or {})
         if isinstance(i.get("receipt"), dict)
         else {}
     )
     if env_ts.get("status") == "granted" and i.get("receipt_tsr_base64"):
-        present["receipt"] = base64.b64decode(i["receipt_tsr_base64"])
+        present["receipt"] = _b64_or_empty(i["receipt_tsr_base64"])
     return present
 
 
@@ -1329,13 +1604,33 @@ def tsa_signature_outcome(i, roots):
     }
 
 
+_REFUSED = {"refused": True, "reason": "unknown schema, canonicalization or suite"}
+
+
+_INTERNAL_ERROR = {"refused": True, "reason": "internal error"}
+
+
 def vector_outcome(vec, tsa_roots=None):
+    """The outcome for a vector. An ill-typed input is the step-1 refusal (_typed_inputs). Anything unforeseen is
+    {"refused": true, "reason": "internal error"}, a distinct answer so that it is never mistaken for a schema refusal.
+    With WAR_VERIFY_STRICT=1 in the environment the exception is raised instead (tests and fuzzers set it)."""
+    try:
+        return _vector_outcome(vec, tsa_roots)
+    except Exception:
+        if os.environ.get("WAR_VERIFY_STRICT") == "1":
+            raise
+        return dict(_INTERNAL_ERROR)
+
+
+def _vector_outcome(vec, tsa_roots=None):
+    if not _typed_inputs(vec):
+        return dict(_REFUSED)
     i = vec["inputs"]
     try:
         canonical_for(i["receipt"]["receipt"])
     except ValueError:
-        return {"refused": True, "reason": "unknown schema, canonicalization or suite"}
-    b64 = lambda k: base64.b64decode(i[k]) if i.get(k) else None
+        return dict(_REFUSED)
+    b64 = lambda k: _b64_or_empty(i[k]) if i.get(k) else None
     v = verify_receipt(
         i["receipt"],
         i["keys"],
@@ -1360,8 +1655,8 @@ def vector_outcome(vec, tsa_roots=None):
     # tsa_signature (profile 1.4) is evaluated only against relying-party anchors: the vector's tsa_roots_base64 or
     # --tsa-roots. Without anchors the field is omitted, which is read as not_evaluated for each token present.
     roots = tsa_roots
-    if roots is None and "tsa_roots_base64" in i:
-        roots = [base64.b64decode(r) for r in i["tsa_roots_base64"]]
+    if roots is None and i.get("tsa_roots_base64") is not None:
+        roots = [_b64_or_empty(r) for r in i["tsa_roots_base64"]]
     if roots and tsa_tokens_present(
         i
     ):  # an empty anchor list is "without anchors": not evaluated
