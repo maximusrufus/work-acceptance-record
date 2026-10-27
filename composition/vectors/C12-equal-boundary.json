@@ -1,0 +1,51 @@
+{
+  "expect": {
+    "conditions": [],
+    "disposition": "accepted",
+    "result": "verified"
+  },
+  "id": "C12-equal-boundary",
+  "inputs": {
+    "record": "eyJmb3JtYXQiOiJqd3MiLCJzaWduYXR1cmUiOiJleUpoYkdjaU9pSkZaRVJUUVNJc0ltdHBaQ0k2SW1Od0xURWlMQ0owZVhBaU9pSjROREF5TFdGalkyVndkR0Z1WTJVcmFuZHpJbjAuZXlKaGRYUm9iM0pwZEhraU9uc2liVzlrWlNJNkltUmxZMnhoY21Wa0lpd2ljSEp2Wm1sc1pTSTZJbVJsWTJ4aGNtVmtMV1YyYVdSbGJtTmxMekFpTENKeVpXWmxjbVZ1WTJVaU9pSWlmU3dpWTI5dVptbHliV2x1WjFCaGNuUjVJam9pWkdsa09uZGxZanBpZFhsbGNpNWxlR0Z0Y0d4bElpd2lZMjl1ZEdWNGRFbGtJam9pTUhnMU5HVTVaV05qWTJZNE9HTXhOakUwTkdGa09URTROVFJoWWpRNE1tUTNOMkV5TkdSbE9XSXlOemN3T1RJNU5XWmhZamd6WldGbU5ETTVPRGt3WWpFeElpd2laR1ZzYVhabGNubEpjM04xWlhJaU9pSmthV1E2ZDJWaU9tTm9aV05yWlhJdVpYaGhiWEJzWlNJc0ltUnBjM0J2YzJsMGFXOXVJam9pWVdOalpYQjBaV1FpTENKcGMzTjFaV1JCZENJNk1UYzRNRE14TlRJd01Td2liM1YwWTI5dFpVUnBaMlZ6ZENJNklqQjRZMlV3WmpjeU5EYzNOR015TmprMVl6UTFaVE00TURaa05URTVOV00wWXpZME1qWTRPVGd4TTJFMVkyWmhOVGxoT0RjeE56UmhPR0l3WmpVM1pESm1ZeUlzSW5OcFoyNWxjaUk2SW1ScFpEcDNaV0k2WW5WNVpYSXVaWGhoYlhCc1pTSXNJbk4xWW1wbFkzUWlPbnNpY0hKdlptbHNaU0k2SW5kaGNpOHhMaklpTENKeVpXWmxjbVZ1WTJVaU9pSjNZWEl2TVM0eU9uTm9ZVEkxTmpvMU5HVTVaV05qWTJZNE9HTXhOakUwTkdGa09URTROVFJoWWpRNE1tUTNOMkV5TkdSbE9XSXlOemN3T1RJNU5XWmhZamd6WldGbU5ETTVPRGt3WWpFeEluMHNJblJsY20xelJHbG5aWE4wSWpvaU1IaG1OMlpqT0dRNFlUQm1ZelExTURVell6YzVPVGRoWlRKaE9HVTJNMkkyWmpJd016UTROakprWXpZd09HWmhaakpqTnpVek16UmlZekEwWm1WaE9EVXlJaXdpZG1WeWMybHZiaUk2TUgwLmlkQ1oxbFVHcGZKNW53Mm5uc2R1N0JybHY5Zk1leUpsS3Y3X2YwNVU0elpBT2I2b0dIQ1NhVDU0cmphMGFGWHFJTGUxd3RLSXVhSUhEa205a2hWekRBIn0",
+    "subject": "eyJyZWNlaXB0Ijp7ImNhbm9uaWNhbGl6YXRpb24iOiJKQ1MtUkZDODc4NSIsImNsaWVudF9yZWYiOiJjb21wb3NpdGlvbiB2ZWN0b3IiLCJjcml0ZXJpYSI6eyJjb21taXRtZW50IjoicmZjMzE2MSIsImNvbW1pdHRlZF9hdCI6IjIwMjYtMDMtMDFUMDA6MDA6MDBaIiwiaWQiOiJleGFtcGxlLWNyaXRlcmlhIiwic2hhMjU2IjoiZjdmYzhkOGEwZmM0NTA1M2M3OTk3YWUyYThlNjNiNmYyMDM0ODYyZGM2MDhmYWYyYzc1MzM0YmMwNGZlYTg1MiIsInZlcnNpb24iOiIxIn0sImZpbGVzIjp7Im9yaWdpbmFsIjp7ImJ5dGVzIjoyMCwibmFtZSI6Im9yaWdpbmFsLnBkZiIsInBhZ2VzIjoxLCJzaGEyNTYiOiIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0sInJlbWVkaWF0ZWQiOnsiYnl0ZXMiOjI0LCJuYW1lIjoiZGVsaXZlcmVkLnBkZiIsInBhZ2VzIjoxLCJzaGEyNTYiOiJjZTBmNzI0Nzc0YzI2OTVjNDVlMzgwNmQ1MTk1YzRjNjQyNjg5ODEzYTVjZmE1OWE4NzE3NGE4YjBmNTdkMmZjIn19LCJodW1hbl9yZXZpZXciOnsic2NvcGUiOlsiRXhhbXBsZSByZXZpZXcgc2NvcGUiXSwic3RhdHVzIjoicGVuZGluZyJ9LCJpbmRlcGVuZGVuY2UiOiJpbmRlcGVuZGVudCIsImlzc3VlZF91dGMiOiIyMDI2LTA2LTAxVDEyOjAwOjAwLjUwMFoiLCJpc3N1ZXIiOiJFeGFtcGxlIENoZWNrZXIiLCJrZXlfaWQiOiJjay0xIiwibm90aWNlIjoiVGVzdCB2ZWN0b3IuIE5vdCBhIHJlYWwgY2hlY2suIiwicGFydGllcyI6eyJjaGVja2VyIjp7ImtleV9pZCI6ImNrLTEiLCJuYW1lIjoiRXhhbXBsZSBDaGVja2VyIn0sInByb2R1Y2VyIjp7ImtleV9pZCI6bnVsbCwibmFtZSI6IkV4YW1wbGUgVmVuZG9yIn19LCJwYXltZW50Ijp7ImFtb3VudCI6IjEwMDAwIiwiYXNzZXQiOiIweDAzNmNiZDUzODQyYzU0MjY2MzRlNzkyOTU0MWVjMjMxOGYzZGNmN2UiLCJuZXR3b3JrIjoiZWlwMTU1Ojg0NTMyIiwibm9uY2UiOiIweDExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTEiLCJwYXlfdG8iOiIweDIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIiLCJwYXllciI6IjB4QUIxMmFiMTJBQjEyYWIxMkFCMTJhYjEyQUIxMmFiMTJBQjEyYWIxMiIsInByb3RvY29sIjoieDQwMiIsInNjaGVtZSI6ImV4YWN0In0sInJlY2VpcHRfaWQiOiJFWC1DLTAwMDEiLCJyZXN1bHRzIjpbeyJmaW5kaW5nIjoiTWV0LiIsImlkIjoiYzEiLCJyZXF1aXJlZCI6dHJ1ZSwicmVzdWx0IjoicGFzcyIsInRpdGxlIjoiRmlyc3QgY3JpdGVyaW9uIn1dLCJyZXZpc2lvbiI6MSwic2NoZW1hIjoidHJpbGF0aWMuYWNjZXB0YW5jZS1yZWNlaXB0LzEuMiIsInN1aXRlIjp7ImRpZ2VzdCI6InNoYS0yNTYiLCJzaWduYXR1cmUiOiJFZDI1NTE5In0sInRvb2xzIjp7InZhbGlkYXRvciI6ImV4YW1wbGUgMS4wIn0sInZlcmRpY3QiOiJwYXNzIn0sInNpZ25hdHVyZSI6eyJhbGciOiJFZDI1NTE5Iiwia2V5X2lkIjoiY2stMSIsInZhbHVlIjoiUWllNlVkMDl5Vm41ZFloZ3VXRHFib1lzemFmY0FxdUtiUVFsRjhvK3RvUnZ4YzVvdkp1TVBteXI2YW5YcVdIakk1NWRmV0RLSnNRVHpKUEx6QVgrRFE9PSJ9LCJ0aW1lc3RhbXAiOnsicmVhc29uIjoiY29tcG9zaXRpb24gdmVjdG9yIiwic3RhdHVzIjoibm9uZSJ9fQ",
+    "terms": [],
+    "trust": {
+      "authority": [
+        {
+          "confirmingParty": "did:web:buyer.example",
+          "signer": "did:web:buyer.example",
+          "subjectProfile": "war/1.2",
+          "subjectReference": "war/1.2:sha256:54e9ecccf88c16144ad91854ab482d77a24de9b27709295fab83eaf439890b11"
+        }
+      ],
+      "issuers": [
+        {
+          "issuer": "did:web:checker.example",
+          "keys": [
+            {
+              "ed25519": "xmIKNinEjj6H1b3vFwhUuDDRarNeWDtM7YYWOqAB5cQ",
+              "kid": "ck-1"
+            }
+          ]
+        }
+      ],
+      "keys": [
+        {
+          "key": "BNhiaNjhHUk8J5UYv88Dc5223PvskkEeHUT92LkoElU",
+          "kid": "cp-1",
+          "signer": "did:web:buyer.example"
+        }
+      ]
+    }
+  },
+  "license": "CC0-1.0",
+  "note": "Equal values are allowed (AR-26).",
+  "specifications": {
+    "acceptance": "CNSLabs x402 acceptance record, tag draft-2026-10-27 (commit 428fa21)",
+    "composition": "war/1.2 subject profile",
+    "work": "work-acceptance record, schema trilatic.acceptance-receipt/1.2, profile 1.4.1"
+  },
+  "statementId": "x402accept/0:sha256:e4a2ebf7c1fc7c2d920e4aec16cab5e6a821901f46d2ab39be0d160ca609e412",
+  "subjectIdentity": "war/1.2:sha256:54e9ecccf88c16144ad91854ab482d77a24de9b27709295fab83eaf439890b11",
+  "title": "issuedAt equal to the rounded-up issued_utc"
+}

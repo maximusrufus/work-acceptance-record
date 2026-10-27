@@ -1,0 +1,134 @@
+{
+ "contributed_by": "Trilatic (CC0)",
+ "description": "Vector 37's criteria token with an unsignedAttrs [1] field appended to its SignerInfo, holding one arbitrary attribute, and the DER lengths above it corrected. Unsigned attributes are not covered by the signature and are not read: the outcome is identical to vector 37, and their presence or content is no ground for refusal.",
+ "expected": {
+  "criteria_committed_before_check": "yes",
+  "criteria_hash": "match",
+  "independence": "independent",
+  "problem_codes": [],
+  "receipt_timestamp": "none",
+  "signature_valid": true,
+  "tsa_signature": {
+   "criteria": "verified"
+  },
+  "verdict_recomputed": "pass",
+  "verdict_stated": "pass",
+  "warning_codes": []
+ },
+ "inputs": {
+  "criteria_file_base64": "eyJjcml0ZXJpYSI6W3siaWQiOiJjMSIsInJlcXVpcmVkIjp0cnVlLCJyZXF1aXJlbWVudCI6IlRoZSBmaXJzdCByZXF1aXJlbWVudC4iLCJ0aXRsZSI6IkZpcnN0IHJlcXVpcmVkIGNyaXRlcmlvbiJ9LHsiaWQiOiJjMiIsInJlcXVpcmVkIjp0cnVlLCJyZXF1aXJlbWVudCI6IlRoZSBzZWNvbmQgcmVxdWlyZW1lbnQuIiwidGl0bGUiOiJTZWNvbmQgcmVxdWlyZWQgY3JpdGVyaW9uIn0seyJpZCI6ImMzIiwicmVxdWlyZWQiOmZhbHNlLCJyZXF1aXJlbWVudCI6IkFuIG9wdGlvbmFsIHJlcXVpcmVtZW50LiIsInRpdGxlIjoiT3B0aW9uYWwgY3JpdGVyaW9uIn1dLCJjcml0ZXJpYV9zZXQiOiJleGFtcGxlLWNyaXRlcmlhIiwicmVzdWx0X3ZvY2FidWxhcnkiOlsicGFzcyIsImZhaWwiLCJub3QtZXZhbHVhdGVkIiwiZXJyb3IiXSwidGl0bGUiOiJFeGFtcGxlIGNyaXRlcmlhIGZvciB0ZXN0IHZlY3RvcnMiLCJ2ZXJzaW9uIjoiMSJ9",
+  "criteria_tsr_base64": "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",
+  "keys": {
+   "issuer": "Example Checker (test vectors)",
+   "keys": [
+    {
+     "alg": "Ed25519",
+     "key_id": "spec-test-2f2dfa2f",
+     "public_key_base64": "IG8NU3Wa4RNk++CwdHYLlfOxAtwRl2hz0hJKfLgZyJk=",
+     "status": "test"
+    }
+   ]
+  },
+  "receipt": {
+   "receipt": {
+    "canonicalization": "JCS-RFC8785",
+    "client_ref": "test vector",
+    "criteria": {
+     "commitment": "rfc3161",
+     "committed_at": "2026-10-20T15:38:25Z",
+     "id": "example-criteria",
+     "sha256": "4413e99d73d743d7b63a8362cf3d47ff646c9b64e3972b2fb6984093c8e9add7",
+     "version": "1"
+    },
+    "files": {
+     "original": {
+      "bytes": 22,
+      "name": "original.pdf",
+      "pages": 1,
+      "sha256": "4cbaf696bbf09c7f9c08d2fc5cb4e93235d0d9ff94a916b7dd90b91ef057e4be"
+     },
+     "remediated": {
+      "bytes": 23,
+      "name": "delivered.pdf",
+      "pages": 1,
+      "sha256": "b520ef4eb7a0f3e0d725ea92167e4962fe43584c7747b44e0acd4d846eaa4cf8"
+     }
+    },
+    "human_review": {
+     "scope": [
+      "Example review scope"
+     ],
+     "status": "pending"
+    },
+    "independence": "independent",
+    "issued_utc": "2026-10-20T15:39:00Z",
+    "issuer": "Example Checker",
+    "key_id": "spec-test-2f2dfa2f",
+    "notice": "Test vector. Not a real check.",
+    "parties": {
+     "checker": {
+      "key_id": "spec-test-2f2dfa2f",
+      "name": "Example Checker"
+     },
+     "producer": {
+      "key_id": null,
+      "name": "Example Vendor"
+     }
+    },
+    "receipt_id": "EX-0001",
+    "results": [
+     {
+      "finding": "Met.",
+      "id": "c1",
+      "required": true,
+      "result": "pass",
+      "title": "First required criterion"
+     },
+     {
+      "finding": "Met.",
+      "id": "c2",
+      "required": true,
+      "result": "pass",
+      "title": "Second required criterion"
+     },
+     {
+      "finding": "No review recorded.",
+      "id": "c3",
+      "required": false,
+      "result": "not-evaluated",
+      "title": "Optional criterion"
+     }
+    ],
+    "revision": 1,
+    "schema": "trilatic.acceptance-receipt/1.2",
+    "suite": {
+     "digest": "sha-256",
+     "signature": "Ed25519"
+    },
+    "tools": {
+     "profile": "example profile",
+     "validator": "example 1.0"
+    },
+    "verdict": "pass"
+   },
+   "signature": {
+    "alg": "Ed25519",
+    "key_id": "spec-test-2f2dfa2f",
+    "value": "06Q3s44f9YomqHl1gcgaqb7Xy249CWzsMMYPdLc8C3WoU/15RN1HlQz/om9m2TLhu7taMNOTqS6jksixk1hyAQ=="
+   },
+   "timestamp": {
+    "reason": "not requested",
+    "status": "none"
+   }
+  },
+  "receipt_tsr_base64": null,
+  "tsa_roots_base64": [
+   "MIIDHjCCAgagAwIBAgIESBNJTjANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDDCRXQVIgVGVzdCBSb290IChub3QgYSByZWFsIGF1dGhvcml0eSkwHhcNMjAwMTAxMDAwMDAwWhcNNDAxMjMxMjM1OTU5WjAvMS0wKwYDVQQDDCRXQVIgVGVzdCBSb290IChub3QgYSByZWFsIGF1dGhvcml0eSkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCb9omzagz+L7T9Nw9LhoCJNFd4uhPjTcTUEupBqvW8ALrNRQkbnNxlWckfPn+aIehHFE6dMQ7xT0dEvvVyeFmaw3USIEXZz2GOSeq4qym4Xl36vhSu5GXlJ5I82IZZNyXsoTSGMnfGGV+d2TwhJvFnlN1w79TULm6VtnzQkxloikZ8mIPR5P6JG0h7jIQbvmckKsdUjfv0k+Hzk+hhoHSAZ2DR1AH9vNA6XZ/Q/M2YuSq2L7eSe5VYbz/2LCYXQeETsCvU38h1pOF6eZpJYqZM0KFb6J7IRAvLXR3BblA9DOVY1/H5tlnlkLj630tgwwcRWfd35CkfOFPsryhi9SAnAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgEGMB0GA1UdDgQWBBTRjYCU6RKx6snb2b5vNARG4YlY0zANBgkqhkiG9w0BAQsFAAOCAQEAIMFM1pkqQwAGnpLQESmndFyI71LJ80fhBDNwvr6WREIiFPhuEOj4IQlQ3HRR26stP1c2WHwNgqMjGWyu/iwL2dPGvInXxk7oNOIyBaBy8iqEinw8onUkMcczD5gdjzV690sPX1AsCA2dQBPCh7SGR8JNzlvDhUO4Puf/SUqDsynbFJhAZlKI5J9Srpqx5ADv9HxpQnAAlHmkIqxlX14kzr1VMF6J5JqZlamjfEdFFmxQBw6BsKHtcj4Jjpkc8jVdLja+CDsaYwZcxcpdFtE/8KHCErcAJKi29RQdUnAlUBu3+9kFrVf2Z5OTz95plxogPI+iLTGos/hQkC5KqW4tcg=="
+  ]
+ },
+ "license": "CC0-1.0",
+ "spec": "acceptance record, schema trilatic.acceptance-receipt/1.2",
+ "title": "83-tsa-signer-info-unsigned-attributes-ignored",
+ "vector": "83-tsa-signer-info-unsigned-attributes-ignored",
+ "warning": "Signed with a published TEST key. Never trust a record signed by it."
+}

@@ -1,0 +1,44 @@
+{
+  "expect": {
+    "conditions": [],
+    "disposition": "accepted",
+    "result": "verified"
+  },
+  "id": "C02-valid-payer",
+  "inputs": {
+    "record": "eyJmb3JtYXQiOiJqd3MiLCJzaWduYXR1cmUiOiJleUpoYkdjaU9pSkZaRVJUUVNJc0ltdHBaQ0k2SW5CaGVXVnlMVEVpTENKMGVYQWlPaUo0TkRBeUxXRmpZMlZ3ZEdGdVkyVXJhbmR6SW4wLmV5SmhkWFJvYjNKcGRIa2lPbnNpYlc5a1pTSTZJbVJwY21WamRDSXNJbkJ5YjJacGJHVWlPaUp3WVhsbGNpOHdJaXdpY21WbVpYSmxibU5sSWpvaUluMHNJbU52Ym1acGNtMXBibWRRWVhKMGVTSTZJbVZwY0RFMU5UbzRORFV6TWpvd2VHRmlNVEpoWWpFeVlXSXhNbUZpTVRKaFlqRXlZV0l4TW1GaU1USmhZakV5WVdJeE1tRmlNVElpTENKamIyNTBaWGgwU1dRaU9pSXdlRFUzT1RJMFpEbGlNamN3WVdSbFlXRXlZVEZsT0dRNE4yTmpaVGt3WldReU1tVmxaV1JtWkdNelpEZ3hZekpsWWpFM1lUZ3haalJrTVRWak1UWTVZamNpTENKa1pXeHBkbVZ5ZVVsemMzVmxjaUk2SW1ScFpEcDNaV0k2WTJobFkydGxjaTVsZUdGdGNHeGxJaXdpWkdsemNHOXphWFJwYjI0aU9pSmhZMk5sY0hSbFpDSXNJbWx6YzNWbFpFRjBJam94Tnpnd016RTRPREF3TENKdmRYUmpiMjFsUkdsblpYTjBJam9pTUhoalpUQm1OekkwTnpjMFl6STJPVFZqTkRWbE16Z3dObVExTVRrMVl6UmpOalF5TmpnNU9ERXpZVFZqWm1FMU9XRTROekUzTkdFNFlqQm1OVGRrTW1aaklpd2ljMmxuYm1WeUlqb2laV2x3TVRVMU9qZzBOVE15T2pCNFlXSXhNbUZpTVRKaFlqRXlZV0l4TW1GaU1USmhZakV5WVdJeE1tRmlNVEpoWWpFeVlXSXhNaUlzSW5OMVltcGxZM1FpT25zaWNISnZabWxzWlNJNkluZGhjaTh4TGpJaUxDSnlaV1psY21WdVkyVWlPaUozWVhJdk1TNHlPbk5vWVRJMU5qbzFOemt5TkdRNVlqSTNNR0ZrWldGaE1tRXhaVGhrT0RkalkyVTVNR1ZrTWpKbFpXVmtabVJqTTJRNE1XTXlaV0l4TjJFNE1XWTBaREUxWXpFMk9XSTNJbjBzSW5SbGNtMXpSR2xuWlhOMElqb2lNSGhtTjJaak9HUTRZVEJtWXpRMU1EVXpZemM1T1RkaFpUSmhPR1UyTTJJMlpqSXdNelE0TmpKa1l6WXdPR1poWmpKak56VXpNelJpWXpBMFptVmhPRFV5SWl3aWRtVnljMmx2YmlJNk1IMC50Y2tFZ3NKUEZOZnRWRVNBVThGZjBxX3gzeVB4SnlENW5jUjBiemR5d3lnRjFGYWdKTjlaazJnd2pqWnlXcmk3U0hNUHNTT1RVU0RuYkNtRS1YVWJDUSJ9",
+    "subject": "eyJyZWNlaXB0Ijp7ImNhbm9uaWNhbGl6YXRpb24iOiJKQ1MtUkZDODc4NSIsImNsaWVudF9yZWYiOiJjb21wb3NpdGlvbiB2ZWN0b3IiLCJjcml0ZXJpYSI6eyJjb21taXRtZW50IjoicmZjMzE2MSIsImNvbW1pdHRlZF9hdCI6IjIwMjYtMDMtMDFUMDA6MDA6MDBaIiwiaWQiOiJleGFtcGxlLWNyaXRlcmlhIiwic2hhMjU2IjoiZjdmYzhkOGEwZmM0NTA1M2M3OTk3YWUyYThlNjNiNmYyMDM0ODYyZGM2MDhmYWYyYzc1MzM0YmMwNGZlYTg1MiIsInZlcnNpb24iOiIxIn0sImZpbGVzIjp7Im9yaWdpbmFsIjp7ImJ5dGVzIjoyMCwibmFtZSI6Im9yaWdpbmFsLnBkZiIsInBhZ2VzIjoxLCJzaGEyNTYiOiIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0sInJlbWVkaWF0ZWQiOnsiYnl0ZXMiOjI0LCJuYW1lIjoiZGVsaXZlcmVkLnBkZiIsInBhZ2VzIjoxLCJzaGEyNTYiOiJjZTBmNzI0Nzc0YzI2OTVjNDVlMzgwNmQ1MTk1YzRjNjQyNjg5ODEzYTVjZmE1OWE4NzE3NGE4YjBmNTdkMmZjIn19LCJodW1hbl9yZXZpZXciOnsic2NvcGUiOlsiRXhhbXBsZSByZXZpZXcgc2NvcGUiXSwic3RhdHVzIjoicGVuZGluZyJ9LCJpbmRlcGVuZGVuY2UiOiJpbmRlcGVuZGVudCIsImlzc3VlZF91dGMiOiIyMDI2LTA2LTAxVDEyOjAwOjAwWiIsImlzc3VlciI6IkV4YW1wbGUgQ2hlY2tlciIsImtleV9pZCI6ImNrLTEiLCJub3RpY2UiOiJUZXN0IHZlY3Rvci4gTm90IGEgcmVhbCBjaGVjay4iLCJwYXJ0aWVzIjp7ImNoZWNrZXIiOnsia2V5X2lkIjoiY2stMSIsIm5hbWUiOiJFeGFtcGxlIENoZWNrZXIifSwicHJvZHVjZXIiOnsia2V5X2lkIjpudWxsLCJuYW1lIjoiRXhhbXBsZSBWZW5kb3IifX0sInBheW1lbnQiOnsiYW1vdW50IjoiMTAwMDAiLCJhc3NldCI6IjB4MDM2Y2JkNTM4NDJjNTQyNjYzNGU3OTI5NTQxZWMyMzE4ZjNkY2Y3ZSIsIm5ldHdvcmsiOiJlaXAxNTU6ODQ1MzIiLCJub25jZSI6IjB4MTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMSIsInBheV90byI6IjB4MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMiIsInBheWVyIjoiMHhBQjEyYWIxMkFCMTJhYjEyQUIxMmFiMTJBQjEyYWIxMkFCMTJhYjEyIiwicHJvdG9jb2wiOiJ4NDAyIiwic2NoZW1lIjoiZXhhY3QifSwicmVjZWlwdF9pZCI6IkVYLUMtMDAwMSIsInJlc3VsdHMiOlt7ImZpbmRpbmciOiJNZXQuIiwiaWQiOiJjMSIsInJlcXVpcmVkIjp0cnVlLCJyZXN1bHQiOiJwYXNzIiwidGl0bGUiOiJGaXJzdCBjcml0ZXJpb24ifV0sInJldmlzaW9uIjoxLCJzY2hlbWEiOiJ0cmlsYXRpYy5hY2NlcHRhbmNlLXJlY2VpcHQvMS4yIiwic3VpdGUiOnsiZGlnZXN0Ijoic2hhLTI1NiIsInNpZ25hdHVyZSI6IkVkMjU1MTkifSwidG9vbHMiOnsidmFsaWRhdG9yIjoiZXhhbXBsZSAxLjAifSwidmVyZGljdCI6InBhc3MifSwic2lnbmF0dXJlIjp7ImFsZyI6IkVkMjU1MTkiLCJrZXlfaWQiOiJjay0xIiwidmFsdWUiOiJqQ0luTFBQTTNQK1ptUWErYUpxOXo2SXFqbU5neWY3Ym1DeGhvSkt1dHNUeGJsSEtFREt5dnFpLzhLRW8zaXhDc3lvdVZPQUhDY3VFN1BBVlB6akJDUT09In0sInRpbWVzdGFtcCI6eyJyZWFzb24iOiJjb21wb3NpdGlvbiB2ZWN0b3IiLCJzdGF0dXMiOiJub25lIn19",
+    "terms": [],
+    "trust": {
+      "authority": [],
+      "issuers": [
+        {
+          "issuer": "did:web:checker.example",
+          "keys": [
+            {
+              "ed25519": "xmIKNinEjj6H1b3vFwhUuDDRarNeWDtM7YYWOqAB5cQ",
+              "kid": "ck-1"
+            }
+          ]
+        }
+      ],
+      "keys": [
+        {
+          "key": "h1q1GK43LRMdKweFBar0deDrBSZkXc8dcEL6-3RmT68",
+          "kid": "payer-1",
+          "signer": "eip155:84532:0xab12ab12ab12ab12ab12ab12ab12ab12ab12ab12"
+        }
+      ]
+    }
+  },
+  "license": "CC0-1.0",
+  "note": "payment.payer is mixed case; the derived payer is lowercased.",
+  "specifications": {
+    "acceptance": "CNSLabs x402 acceptance record, tag draft-2026-10-27 (commit 428fa21)",
+    "composition": "war/1.2 subject profile",
+    "work": "work-acceptance record, schema trilatic.acceptance-receipt/1.2, profile 1.4.1"
+  },
+  "statementId": "x402accept/0:sha256:23ef6439d35ebb3d715f37bdc385aa333a57ed9ba49f4e83ff4520d3745a8d59",
+  "subjectIdentity": "war/1.2:sha256:57924d9b270adeaa2a1e8d87cce90ed22eeedfdc3d81c2eb17a81f4d15c169b7",
+  "title": "Valid pair, payer/0 authority from the work record's payment member"
+}

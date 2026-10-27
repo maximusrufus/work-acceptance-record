@@ -1,0 +1,52 @@
+{
+  "expect": {
+    "conditions": [
+      "acceptance_signer_is_issuer"
+    ],
+    "result": "malformed"
+  },
+  "id": "C13-signer-is-issuer",
+  "inputs": {
+    "record": "eyJmb3JtYXQiOiJqd3MiLCJzaWduYXR1cmUiOiJleUpoYkdjaU9pSkZaRVJUUVNJc0ltdHBaQ0k2SW1OckxXRnpMV053SWl3aWRIbHdJam9pZURRd01pMWhZMk5sY0hSaGJtTmxLMnAzY3lKOS5leUpoZFhSb2IzSnBkSGtpT25zaWJXOWtaU0k2SW1SbFkyeGhjbVZrSWl3aWNISnZabWxzWlNJNkltUmxZMnhoY21Wa0xXVjJhV1JsYm1ObEx6QWlMQ0p5WldabGNtVnVZMlVpT2lJaWZTd2lZMjl1Wm1seWJXbHVaMUJoY25SNUlqb2laR2xrT25kbFlqcGlkWGxsY2k1bGVHRnRjR3hsSWl3aVkyOXVkR1Y0ZEVsa0lqb2lNSGcxTnpreU5HUTVZakkzTUdGa1pXRmhNbUV4WlRoa09EZGpZMlU1TUdWa01qSmxaV1ZrWm1Sak0yUTRNV015WldJeE4yRTRNV1kwWkRFMVl6RTJPV0kzSWl3aVpHVnNhWFpsY25sSmMzTjFaWElpT2lKa2FXUTZkMlZpT21Ob1pXTnJaWEl1WlhoaGJYQnNaU0lzSW1ScGMzQnZjMmwwYVc5dUlqb2lZV05qWlhCMFpXUWlMQ0pwYzNOMVpXUkJkQ0k2TVRjNE1ETXhPRGd3TUN3aWIzVjBZMjl0WlVScFoyVnpkQ0k2SWpCNFkyVXdaamN5TkRjM05HTXlOamsxWXpRMVpUTTRNRFprTlRFNU5XTTBZelkwTWpZNE9UZ3hNMkUxWTJaaE5UbGhPRGN4TnpSaE9HSXdaalUzWkRKbVl5SXNJbk5wWjI1bGNpSTZJbU5vWldOclpYSXRjMmxuYm1WeUlpd2ljM1ZpYW1WamRDSTZleUp3Y205bWFXeGxJam9pZDJGeUx6RXVNaUlzSW5KbFptVnlaVzVqWlNJNkluZGhjaTh4TGpJNmMyaGhNalUyT2pVM09USTBaRGxpTWpjd1lXUmxZV0V5WVRGbE9HUTROMk5qWlRrd1pXUXlNbVZsWldSbVpHTXpaRGd4WXpKbFlqRTNZVGd4WmpSa01UVmpNVFk1WWpjaWZTd2lkR1Z5YlhORWFXZGxjM1FpT2lJd2VHWTNabU00WkRoaE1HWmpORFV3TlROak56azVOMkZsTW1FNFpUWXpZalptTWpBek5EZzJNbVJqTmpBNFptRm1NbU0zTlRNek5HSmpNRFJtWldFNE5USWlMQ0oyWlhKemFXOXVJam93ZlEuYnZhTXdPX05NMkJGcDJ0cy1jdWRCYk1HaDlPY252X1o4M1RFQXV2aHlqNHpCTVU4Rm5DM2hoYWh3TlY4Zm82Sm9wM0kyMDB6Nmdham1IdmZVVnFzRGcifQ",
+    "subject": "eyJyZWNlaXB0Ijp7ImNhbm9uaWNhbGl6YXRpb24iOiJKQ1MtUkZDODc4NSIsImNsaWVudF9yZWYiOiJjb21wb3NpdGlvbiB2ZWN0b3IiLCJjcml0ZXJpYSI6eyJjb21taXRtZW50IjoicmZjMzE2MSIsImNvbW1pdHRlZF9hdCI6IjIwMjYtMDMtMDFUMDA6MDA6MDBaIiwiaWQiOiJleGFtcGxlLWNyaXRlcmlhIiwic2hhMjU2IjoiZjdmYzhkOGEwZmM0NTA1M2M3OTk3YWUyYThlNjNiNmYyMDM0ODYyZGM2MDhmYWYyYzc1MzM0YmMwNGZlYTg1MiIsInZlcnNpb24iOiIxIn0sImZpbGVzIjp7Im9yaWdpbmFsIjp7ImJ5dGVzIjoyMCwibmFtZSI6Im9yaWdpbmFsLnBkZiIsInBhZ2VzIjoxLCJzaGEyNTYiOiIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0sInJlbWVkaWF0ZWQiOnsiYnl0ZXMiOjI0LCJuYW1lIjoiZGVsaXZlcmVkLnBkZiIsInBhZ2VzIjoxLCJzaGEyNTYiOiJjZTBmNzI0Nzc0YzI2OTVjNDVlMzgwNmQ1MTk1YzRjNjQyNjg5ODEzYTVjZmE1OWE4NzE3NGE4YjBmNTdkMmZjIn19LCJodW1hbl9yZXZpZXciOnsic2NvcGUiOlsiRXhhbXBsZSByZXZpZXcgc2NvcGUiXSwic3RhdHVzIjoicGVuZGluZyJ9LCJpbmRlcGVuZGVuY2UiOiJpbmRlcGVuZGVudCIsImlzc3VlZF91dGMiOiIyMDI2LTA2LTAxVDEyOjAwOjAwWiIsImlzc3VlciI6IkV4YW1wbGUgQ2hlY2tlciIsImtleV9pZCI6ImNrLTEiLCJub3RpY2UiOiJUZXN0IHZlY3Rvci4gTm90IGEgcmVhbCBjaGVjay4iLCJwYXJ0aWVzIjp7ImNoZWNrZXIiOnsia2V5X2lkIjoiY2stMSIsIm5hbWUiOiJFeGFtcGxlIENoZWNrZXIifSwicHJvZHVjZXIiOnsia2V5X2lkIjpudWxsLCJuYW1lIjoiRXhhbXBsZSBWZW5kb3IifX0sInBheW1lbnQiOnsiYW1vdW50IjoiMTAwMDAiLCJhc3NldCI6IjB4MDM2Y2JkNTM4NDJjNTQyNjYzNGU3OTI5NTQxZWMyMzE4ZjNkY2Y3ZSIsIm5ldHdvcmsiOiJlaXAxNTU6ODQ1MzIiLCJub25jZSI6IjB4MTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMSIsInBheV90byI6IjB4MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMiIsInBheWVyIjoiMHhBQjEyYWIxMkFCMTJhYjEyQUIxMmFiMTJBQjEyYWIxMkFCMTJhYjEyIiwicHJvdG9jb2wiOiJ4NDAyIiwic2NoZW1lIjoiZXhhY3QifSwicmVjZWlwdF9pZCI6IkVYLUMtMDAwMSIsInJlc3VsdHMiOlt7ImZpbmRpbmciOiJNZXQuIiwiaWQiOiJjMSIsInJlcXVpcmVkIjp0cnVlLCJyZXN1bHQiOiJwYXNzIiwidGl0bGUiOiJGaXJzdCBjcml0ZXJpb24ifV0sInJldmlzaW9uIjoxLCJzY2hlbWEiOiJ0cmlsYXRpYy5hY2NlcHRhbmNlLXJlY2VpcHQvMS4yIiwic3VpdGUiOnsiZGlnZXN0Ijoic2hhLTI1NiIsInNpZ25hdHVyZSI6IkVkMjU1MTkifSwidG9vbHMiOnsidmFsaWRhdG9yIjoiZXhhbXBsZSAxLjAifSwidmVyZGljdCI6InBhc3MifSwic2lnbmF0dXJlIjp7ImFsZyI6IkVkMjU1MTkiLCJrZXlfaWQiOiJjay0xIiwidmFsdWUiOiJqQ0luTFBQTTNQK1ptUWErYUpxOXo2SXFqbU5neWY3Ym1DeGhvSkt1dHNUeGJsSEtFREt5dnFpLzhLRW8zaXhDc3lvdVZPQUhDY3VFN1BBVlB6akJDUT09In0sInRpbWVzdGFtcCI6eyJyZWFzb24iOiJjb21wb3NpdGlvbiB2ZWN0b3IiLCJzdGF0dXMiOiJub25lIn19",
+    "terms": [],
+    "trust": {
+      "authority": [
+        {
+          "confirmingParty": "did:web:buyer.example",
+          "signer": "checker-signer",
+          "subjectProfile": "war/1.2",
+          "subjectReference": "war/1.2:sha256:57924d9b270adeaa2a1e8d87cce90ed22eeedfdc3d81c2eb17a81f4d15c169b7"
+        }
+      ],
+      "issuers": [
+        {
+          "issuer": "did:web:checker.example",
+          "keys": [
+            {
+              "ed25519": "xmIKNinEjj6H1b3vFwhUuDDRarNeWDtM7YYWOqAB5cQ",
+              "kid": "ck-1"
+            }
+          ]
+        }
+      ],
+      "keys": [
+        {
+          "key": "xmIKNinEjj6H1b3vFwhUuDDRarNeWDtM7YYWOqAB5cQ",
+          "kid": "ck-as-cp",
+          "signer": "checker-signer"
+        }
+      ]
+    }
+  },
+  "license": "CC0-1.0",
+  "note": "trust.keys maps the checker key to another signer string; AR-33 still fires on the key.",
+  "specifications": {
+    "acceptance": "CNSLabs x402 acceptance record, tag draft-2026-10-27 (commit 428fa21)",
+    "composition": "war/1.2 subject profile",
+    "work": "work-acceptance record, schema trilatic.acceptance-receipt/1.2, profile 1.4.1"
+  },
+  "statementId": "x402accept/0:sha256:bf119911e148b19d82336b0e116d5ba2a7167834713ccd9f02d64bf0bfe343aa",
+  "subjectIdentity": "war/1.2:sha256:57924d9b270adeaa2a1e8d87cce90ed22eeedfdc3d81c2eb17a81f4d15c169b7",
+  "title": "Acceptance signed with the work record's checker key"
+}

@@ -1,0 +1,52 @@
+{
+  "expect": {
+    "conditions": [],
+    "disposition": "accepted",
+    "reason": "evidence_unavailable",
+    "result": "unknown"
+  },
+  "id": "C15-subject-absent",
+  "inputs": {
+    "record": "eyJmb3JtYXQiOiJqd3MiLCJzaWduYXR1cmUiOiJleUpoYkdjaU9pSkZaRVJUUVNJc0ltdHBaQ0k2SW1Od0xURWlMQ0owZVhBaU9pSjROREF5TFdGalkyVndkR0Z1WTJVcmFuZHpJbjAuZXlKaGRYUm9iM0pwZEhraU9uc2liVzlrWlNJNkltUmxZMnhoY21Wa0lpd2ljSEp2Wm1sc1pTSTZJbVJsWTJ4aGNtVmtMV1YyYVdSbGJtTmxMekFpTENKeVpXWmxjbVZ1WTJVaU9pSWlmU3dpWTI5dVptbHliV2x1WjFCaGNuUjVJam9pWkdsa09uZGxZanBpZFhsbGNpNWxlR0Z0Y0d4bElpd2lZMjl1ZEdWNGRFbGtJam9pTUhnMU56a3lOR1E1WWpJM01HRmtaV0ZoTW1FeFpUaGtPRGRqWTJVNU1HVmtNakpsWldWa1ptUmpNMlE0TVdNeVpXSXhOMkU0TVdZMFpERTFZekUyT1dJM0lpd2laR1ZzYVhabGNubEpjM04xWlhJaU9pSmthV1E2ZDJWaU9tTm9aV05yWlhJdVpYaGhiWEJzWlNJc0ltUnBjM0J2YzJsMGFXOXVJam9pWVdOalpYQjBaV1FpTENKcGMzTjFaV1JCZENJNk1UYzRNRE14T0Rnd01Dd2liM1YwWTI5dFpVUnBaMlZ6ZENJNklqQjRZMlV3WmpjeU5EYzNOR015TmprMVl6UTFaVE00TURaa05URTVOV00wWXpZME1qWTRPVGd4TTJFMVkyWmhOVGxoT0RjeE56UmhPR0l3WmpVM1pESm1ZeUlzSW5OcFoyNWxjaUk2SW1ScFpEcDNaV0k2WW5WNVpYSXVaWGhoYlhCc1pTSXNJbk4xWW1wbFkzUWlPbnNpY0hKdlptbHNaU0k2SW5kaGNpOHhMaklpTENKeVpXWmxjbVZ1WTJVaU9pSjNZWEl2TVM0eU9uTm9ZVEkxTmpvMU56a3lOR1E1WWpJM01HRmtaV0ZoTW1FeFpUaGtPRGRqWTJVNU1HVmtNakpsWldWa1ptUmpNMlE0TVdNeVpXSXhOMkU0TVdZMFpERTFZekUyT1dJM0luMHNJblJsY20xelJHbG5aWE4wSWpvaU1IaG1OMlpqT0dRNFlUQm1ZelExTURVell6YzVPVGRoWlRKaE9HVTJNMkkyWmpJd016UTROakprWXpZd09HWmhaakpqTnpVek16UmlZekEwWm1WaE9EVXlJaXdpZG1WeWMybHZiaUk2TUgwLms0cXRtYmNsODdfMklDZENoWDhWWEZTaHl2LUdYa0dpWU5uQTZ4dXpMNGYwcFk1RFRhM2xFUVQ4SDRMV1NQSDNSbmVack85Umlic3hDQnpGSHE2b0J3In0",
+    "subject": null,
+    "terms": [],
+    "trust": {
+      "authority": [
+        {
+          "confirmingParty": "did:web:buyer.example",
+          "signer": "did:web:buyer.example",
+          "subjectProfile": "war/1.2",
+          "subjectReference": "war/1.2:sha256:57924d9b270adeaa2a1e8d87cce90ed22eeedfdc3d81c2eb17a81f4d15c169b7"
+        }
+      ],
+      "issuers": [
+        {
+          "issuer": "did:web:checker.example",
+          "keys": [
+            {
+              "ed25519": "xmIKNinEjj6H1b3vFwhUuDDRarNeWDtM7YYWOqAB5cQ",
+              "kid": "ck-1"
+            }
+          ]
+        }
+      ],
+      "keys": [
+        {
+          "key": "BNhiaNjhHUk8J5UYv88Dc5223PvskkEeHUT92LkoElU",
+          "kid": "cp-1",
+          "signer": "did:web:buyer.example"
+        }
+      ]
+    }
+  },
+  "license": "CC0-1.0",
+  "note": "",
+  "specifications": {
+    "acceptance": "CNSLabs x402 acceptance record, tag draft-2026-10-27 (commit 428fa21)",
+    "composition": "war/1.2 subject profile",
+    "work": "work-acceptance record, schema trilatic.acceptance-receipt/1.2, profile 1.4.1"
+  },
+  "statementId": "x402accept/0:sha256:f14030b4a18f8cd2b4804fbda5b1a31c240ff3227556fe69acfc8b0920a65884",
+  "subjectIdentity": null,
+  "title": "Work record not supplied"
+}
