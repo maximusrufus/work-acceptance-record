@@ -58,9 +58,3 @@ Each item quotes the line that caused it and states the reading used.
 11. **`issuer` (display name) vs. `trust.issuers[*].issuer`.** Section 3.2: "issuer | Display name of the issuing
     organisation." It is not an identifier and is not compared with `deliveryIssuer`; a relying party must bind the
     key to `deliveryIssuer` itself.
-
-## Implementation notes
-
-- CNSLabs signing implemented from SPEC.md text only: JWS form (AR-15 to AR-17, AR-19, AR-20), body checks (AR-4 to
-  AR-6, partial: integer spelling is checked through JCS re-serialisation of the payload, AR-16), statementId
-  (AR-21), verification order (AR-35), authority profiles payer/0 and declared-evidence/0. EIP-712 not implemented.

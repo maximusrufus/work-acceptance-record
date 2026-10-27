@@ -1,5 +1,5 @@
 {
- "contributed_by": "aos-standard/catalog (CC0), well-formed variant of the probe behind vectors 50 and 51",
+ "contributed_by": "Tetsurohhori (CC0), well-formed variant of the probe behind vectors 50 and 51",
  "description": "These variants put the same three values, as one `SEQUENCE`, in an unsigned attribute of the token's SignerInfo (`unsignedAttrs`, RFC 5652 5.3: `SET OF Attribute`, each `AttributeValue ::= ANY`). The attribute type is a UUID OID (`2.25.<uuid>`, X.667), so no registered meaning is claimed. Nothing signed is changed: the signature covers the signed attributes, and the TSTInfo inside the encapsulated content is untouched. The response is well-formed DER throughout, so the only thing a verifier can disagree on is where it reads the imprint from.",
  "expected": {
   "criteria_committed_before_check": "yes",
