@@ -1,0 +1,413 @@
+[
+ {
+  "name": "S0 resign eip712 unchanged",
+  "ok": true,
+  "got": {
+   "result": "verified",
+   "conditions": [],
+   "disposition": "accepted"
+  }
+ },
+ {
+  "name": "S1 resign jws unchanged",
+  "ok": true,
+  "got": {
+   "result": "verified",
+   "conditions": [],
+   "disposition": "accepted"
+  }
+ },
+ {
+  "name": "E1 field change, old sig",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E2 termsDigest changed, resigned",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_terms_digest_mismatch"
+   ]
+  }
+ },
+ {
+  "name": "E3 wrong chain id, resigned, chain says no code on 8453",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted"
+  }
+ },
+ {
+  "name": "E4 wrong chain id, old sig",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E5 wrong chain id, no chain facts",
+  "ok": true,
+  "got": {
+   "result": "key_unresolved",
+   "conditions": [],
+   "reason": "chain_state_unavailable",
+   "policy_refusal": false
+  }
+ },
+ {
+  "name": "E6 receipt payee swap, unsigned",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable"
+  }
+ },
+ {
+  "name": "E7 receipt payee swap, re-signed by seller, record not updated",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ]
+  }
+ },
+ {
+  "name": "E8 high-s + flipped v",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E9 v normalized to 0/1",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E10 uppercase hex signature",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E11 signed by OTHER, body names BUYER",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E12 issuedAt before outcome, resigned",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_precedes_outcome"
+   ]
+  }
+ },
+ {
+  "name": "E13 offer payTo swapped (resigned by seller)",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable"
+  }
+ },
+ {
+  "name": "E14 offer expired before outcome",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable"
+  }
+ },
+ {
+  "name": "E15 extra member, resigned (typed msg unchanged)",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E16 uppercase signer address",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "E17 payer signs for another party",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted"
+  }
+ },
+ {
+  "name": "E18 terms input empty",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable"
+  }
+ },
+ {
+  "name": "E19 deliveryIssuer changed to unlisted issuer",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable"
+  }
+ },
+ {
+  "name": "J1 field change, old sig",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J2 alg=none confusion",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J2 alg=HS256 confusion",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J2 alg=ES256K confusion",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J3 non-canonical key order, resigned",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J4 non-canonical whitespace, resigned",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J5 unknown kid with complete=true",
+  "ok": true,
+  "got": {
+   "result": "key_unresolved",
+   "conditions": [],
+   "reason": "key_missing",
+   "policy_refusal": true
+  }
+ },
+ {
+  "name": "J6 S+L malleated signature",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J7 signed by issuer key KS as cp-1",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "signature_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J8 trust.keys maps cp-1 to issuer key KS",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ]
+  }
+ },
+ {
+  "name": "J9 not_responded",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J10 issuedAt 2^53",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J11 uppercase contextId",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J12 padded base64url signature",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J13 trailing space in signer (no trimming)",
+  "ok": true,
+  "got": {
+   "result": "key_unresolved",
+   "conditions": [],
+   "reason": "signer_mismatch",
+   "policy_refusal": false
+  }
+ },
+ {
+  "name": "J14 version 1",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_member_invalid"
+   ]
+  }
+ },
+ {
+  "name": "J15 terms mismatch",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_terms_digest_mismatch"
+   ]
+  }
+ },
+ {
+  "name": "J16 declared authority removed",
+  "ok": true,
+  "got": {
+   "result": "unknown",
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted"
+  }
+ },
+ {
+  "name": "J17 buyer key also listed for issuer",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ]
+  }
+ },
+ {
+  "name": "J18 outcome bytes supplied that do not hash to digest",
+  "ok": true,
+  "got": {
+   "result": "malformed",
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ]
+  }
+ }
+]

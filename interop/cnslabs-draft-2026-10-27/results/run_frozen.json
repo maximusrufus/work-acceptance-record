@@ -1,0 +1,1897 @@
+{
+ "AR-C01-a-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C01-a-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C01-b-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C01-b-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C01-c-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C01-d-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C01-d-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C02-record-A-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C02-record-D-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "disputed",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "disputed",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C03-a-none": {
+  "expect": {
+   "conditions": [],
+   "result": "no_record"
+  },
+  "got": {
+   "conditions": [],
+   "result": "no_record"
+  },
+  "pass": true
+ },
+ "AR-C04-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C04-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-d-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-d-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-e-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-e-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-f-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-g-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-l-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-l-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-o-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C05-p-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C06-a-eip712": {
+  "expect": {
+   "conditions": [
+    "confirming_party_absent"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "confirming_party_absent"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C06-a-jws": {
+  "expect": {
+   "conditions": [
+    "confirming_party_absent"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "confirming_party_absent"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C07-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C07-b-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C07-c-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_signer_is_issuer"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C08-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_terms_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_terms_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C08-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_terms_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_terms_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C09-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C09-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C09-b-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C09-b-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_outcome_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C10-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C10-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C10-b-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C10-b-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_record_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C11-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_precedes_outcome"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_precedes_outcome"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C11-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_precedes_outcome"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_precedes_outcome"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C12-a-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "rejected",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "rejected",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C13-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid",
+    "acceptance_terms_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid",
+    "acceptance_terms_digest_mismatch"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C14-a-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C15-a-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C15-b-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C15-c-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C15-d-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C15-e-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-a-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-b-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-c-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-d-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-e-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-f-jws": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-g-jws": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-h-jws": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-i-jws": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-j-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-k-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-l-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C16-m-eip712": {
+  "expect": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "signature_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C17-a-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C17-b-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "result": "verified"
+  },
+  "pass": true
+ },
+ "AR-C18-a-eip712": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "chain_state_unavailable",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "chain_state_unavailable",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C18-b-eip712": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "contract_accounts_unsupported",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "contract_accounts_unsupported",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C18-c-eip712": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "chain_state_unavailable",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "chain_state_unavailable",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C18-d-eip712": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "chain_state_unavailable",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "chain_state_unavailable",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C19-a-jws": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": true,
+   "reason": "key_missing",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": true,
+   "reason": "key_missing",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C19-b-jws": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": true,
+   "reason": "signer_mismatch",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": true,
+   "reason": "signer_mismatch",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C19-c-jws": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": true,
+   "reason": "key_missing",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": true,
+   "reason": "key_missing",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C20-a-jws": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "key_refused",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "key_refused",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C20-b-jws": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "key_refused",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "key_refused",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C20-c-jws": {
+  "expect": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "key_refused",
+   "result": "key_unresolved"
+  },
+  "got": {
+   "conditions": [],
+   "policy_refusal": false,
+   "reason": "key_refused",
+   "result": "key_unresolved"
+  },
+  "pass": true
+ },
+ "AR-C21-a-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C21-b-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C21-c-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C21-d-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C21-e-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C21-f-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C21-g-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C22-a-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-b-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-c-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-d-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-e-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-f-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-g-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C22-h-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_authority_unresolved"
+   ],
+   "disposition": "accepted",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C23-a-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "profile_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "profile_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C23-a-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "profile_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "profile_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-a-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-a-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-b-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-b-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-c-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-c-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-d-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-d-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-e-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-e-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-f-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-f-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-g-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-g-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-h-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-h-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-i-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-i-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-j-eip712": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C24-j-jws": {
+  "expect": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "got": {
+   "conditions": [],
+   "disposition": "accepted",
+   "reason": "evidence_unavailable",
+   "result": "unknown"
+  },
+  "pass": true
+ },
+ "AR-C25-b-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-b-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-c-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-c-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-h-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-h-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-i-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-i-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-j-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-j-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-k-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-k-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-m-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-m-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-n-eip712": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ },
+ "AR-C25-n-jws": {
+  "expect": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "got": {
+   "conditions": [
+    "acceptance_member_invalid"
+   ],
+   "result": "malformed"
+  },
+  "pass": true
+ }
+}

@@ -1,0 +1,140 @@
+# Frozen run report
+
+Checker commit 97ac890 (see FREEZE.md). Frozen pass count: 127/127. Disagreements: none.
+
+| vector | expected | got | pass |
+|---|---|---|---|
+| AR-C01-a-eip712 | verified [] | verified [] | PASS |
+| AR-C01-a-jws | verified [] | verified [] | PASS |
+| AR-C01-b-eip712 | verified [] | verified [] | PASS |
+| AR-C01-b-jws | verified [] | verified [] | PASS |
+| AR-C01-c-eip712 | verified [] | verified [] | PASS |
+| AR-C01-d-eip712 | verified [] | verified [] | PASS |
+| AR-C01-d-jws | verified [] | verified [] | PASS |
+| AR-C02-record-A-eip712 | verified [] | verified [] | PASS |
+| AR-C02-record-D-eip712 | verified [] | verified [] | PASS |
+| AR-C03-a-none | no_record [] | no_record [] | PASS |
+| AR-C04-a-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C04-a-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-a-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-a-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-d-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-d-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-e-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-e-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-l-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-l-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-f-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-g-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-o-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C05-p-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C06-a-eip712 | malformed ['confirming_party_absent'] | malformed ['confirming_party_absent'] | PASS |
+| AR-C06-a-jws | malformed ['confirming_party_absent'] | malformed ['confirming_party_absent'] | PASS |
+| AR-C07-a-jws | malformed ['acceptance_signer_is_issuer'] | malformed ['acceptance_signer_is_issuer'] | PASS |
+| AR-C07-b-jws | malformed ['acceptance_signer_is_issuer'] | malformed ['acceptance_signer_is_issuer'] | PASS |
+| AR-C07-c-eip712 | malformed ['acceptance_signer_is_issuer'] | malformed ['acceptance_signer_is_issuer'] | PASS |
+| AR-C08-a-eip712 | malformed ['acceptance_terms_digest_mismatch'] | malformed ['acceptance_terms_digest_mismatch'] | PASS |
+| AR-C08-a-jws | malformed ['acceptance_terms_digest_mismatch'] | malformed ['acceptance_terms_digest_mismatch'] | PASS |
+| AR-C09-a-eip712 | malformed ['acceptance_outcome_digest_mismatch'] | malformed ['acceptance_outcome_digest_mismatch'] | PASS |
+| AR-C09-a-jws | malformed ['acceptance_outcome_digest_mismatch'] | malformed ['acceptance_outcome_digest_mismatch'] | PASS |
+| AR-C09-b-eip712 | malformed ['acceptance_outcome_digest_mismatch'] | malformed ['acceptance_outcome_digest_mismatch'] | PASS |
+| AR-C09-b-jws | malformed ['acceptance_outcome_digest_mismatch'] | malformed ['acceptance_outcome_digest_mismatch'] | PASS |
+| AR-C10-a-eip712 | malformed ['acceptance_record_digest_mismatch'] | malformed ['acceptance_record_digest_mismatch'] | PASS |
+| AR-C10-a-jws | malformed ['acceptance_record_digest_mismatch'] | malformed ['acceptance_record_digest_mismatch'] | PASS |
+| AR-C10-b-eip712 | malformed ['acceptance_record_digest_mismatch'] | malformed ['acceptance_record_digest_mismatch'] | PASS |
+| AR-C10-b-jws | malformed ['acceptance_record_digest_mismatch'] | malformed ['acceptance_record_digest_mismatch'] | PASS |
+| AR-C11-a-eip712 | malformed ['acceptance_precedes_outcome'] | malformed ['acceptance_precedes_outcome'] | PASS |
+| AR-C11-a-jws | malformed ['acceptance_precedes_outcome'] | malformed ['acceptance_precedes_outcome'] | PASS |
+| AR-C12-a-eip712 | verified [] | verified [] | PASS |
+| AR-C13-a-jws | malformed ['acceptance_member_invalid', 'acceptance_terms_digest_mismatch'] | malformed ['acceptance_member_invalid', 'acceptance_terms_digest_mismatch'] | PASS |
+| AR-C14-a-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C15-a-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C15-b-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C15-c-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C15-d-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C15-e-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-a-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-b-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-c-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-d-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-e-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-j-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-k-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-l-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-m-eip712 | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-f-jws | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-g-jws | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-h-jws | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C16-i-jws | malformed ['signature_invalid'] | malformed ['signature_invalid'] | PASS |
+| AR-C17-a-eip712 | verified [] | verified [] | PASS |
+| AR-C17-b-eip712 | verified [] | verified [] | PASS |
+| AR-C18-a-eip712 | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C18-b-eip712 | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C18-c-eip712 | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C18-d-eip712 | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C19-a-jws | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C19-b-jws | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C19-c-jws | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C20-a-jws | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C20-b-jws | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C20-c-jws | key_unresolved [] | key_unresolved [] | PASS |
+| AR-C21-a-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C21-b-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C21-c-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C21-d-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C21-e-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C21-f-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C21-g-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C22-a-eip712 | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-b-eip712 | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-e-eip712 | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-f-eip712 | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-g-eip712 | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-h-eip712 | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-c-jws | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C22-d-jws | unknown ['acceptance_authority_unresolved'] | unknown ['acceptance_authority_unresolved'] | PASS |
+| AR-C23-a-eip712 | unknown [] | unknown [] | PASS |
+| AR-C23-a-jws | unknown [] | unknown [] | PASS |
+| AR-C24-a-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-a-jws | unknown [] | unknown [] | PASS |
+| AR-C24-b-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-b-jws | unknown [] | unknown [] | PASS |
+| AR-C24-c-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-c-jws | unknown [] | unknown [] | PASS |
+| AR-C24-d-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-d-jws | unknown [] | unknown [] | PASS |
+| AR-C24-e-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-e-jws | unknown [] | unknown [] | PASS |
+| AR-C24-f-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-f-jws | unknown [] | unknown [] | PASS |
+| AR-C24-g-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-g-jws | unknown [] | unknown [] | PASS |
+| AR-C24-h-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-h-jws | unknown [] | unknown [] | PASS |
+| AR-C24-i-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-i-jws | unknown [] | unknown [] | PASS |
+| AR-C24-j-eip712 | unknown [] | unknown [] | PASS |
+| AR-C24-j-jws | unknown [] | unknown [] | PASS |
+| AR-C25-b-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-b-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-c-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-c-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-h-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-h-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-i-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-i-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-j-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-j-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-k-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-k-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-m-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-m-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-n-eip712 | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+| AR-C25-n-jws | malformed ['acceptance_member_invalid'] | malformed ['acceptance_member_invalid'] | PASS |
+
+## Disagreements
+None: 127/127 pass under the frozen checker (commit 97ac890). No fix commit was needed; run_fixed.json not produced.
+
+## Phase 3
+results/phase3_mutate.py + phase3.json: 41 mutated or re-signed inputs (2 sanity re-signs, 39 mutations: field change, wrong chain id, receipt/offer payee swap, expired offer, high-s, v normalised, uppercase sig, alg none/HS256/ES256K, non-canonical JCS order/whitespace, S+L, padded base64url, trailing-space signer, version 1, 2^53 issuedAt, etc.). All 41 returned the result code and conditions the spec text predicts.
+Spec observations (not checker bugs): a record naming another chain for the same payer address resolves to authority_unresolved (payer string includes the receipt's chain), not signature failure; offers for different resources both qualify (AR-29 admits this); the checker's own sealed pass relies on ambiguity readings in checker/AMBIGUITIES.md (19 items).
