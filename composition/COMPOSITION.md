@@ -6,7 +6,7 @@ Draft, not ratified. Profile identifier `war/1.2` is a draft identifier and may 
 
 This document defines one subject profile for the x402 acceptance record, version 0, by Shodai (CNS Labs), tag
 `draft-2026-10-27`, called here "the acceptance specification". Under this profile the subject of an acceptance
-record is a work-acceptance record, schema `trilatic.acceptance-receipt/1.2`, profile 1.4.1, called here "the work
+record is a work-acceptance record, schema `trilatic.acceptance-receipt/1.2`, profile 1.4.2, called here "the work
 specification". It also states how a work-acceptance record can refer to an acceptance record.
 
 The acceptance specification lists composition with third-party records such as work-acceptance records as follow-up
@@ -50,7 +50,9 @@ unavailable otherwise (AR-23):
 4. `trust.issuers` holds, for `deliveryIssuer`, exactly one Ed25519 key whose key id equals `receipt.key_id`. That
    entry is the external trust input in place of the work specification's published key list (W5). `deliveryIssuer` is
    not compared with `receipt.issuer`, which is a display name (W3.2); the binding of the key to `deliveryIssuer`
-   is the relying party's trust input.
+   is the relying party's trust input. Only the `deliveryIssuer` entry is constrained. The work specification's
+   rules on a repeated key id elsewhere in the key list and on one key listed under two key ids (W10; vectors 65, 79
+   and 87) do not apply to acceptance verification.
 5. The key passes AR-19, which is also the key rule of W5.
 6. `signature.value` is canonical padded base64 of 64 bytes (W5), and the signature verifies under RFC 8032 over
    `JCS(receipt)` with the AR-20 rule on `R` and `S`.
@@ -161,5 +163,5 @@ keys; never trust a record signed by one.
 ## References
 
 - x402 acceptance record, version 0, Shodai (CNS Labs), tag `draft-2026-10-27`.
-- Work-acceptance record specification, schema `trilatic.acceptance-receipt/1.2`, profile 1.4.1.
+- Work-acceptance record specification, schema `trilatic.acceptance-receipt/1.2`, profile 1.4.2.
 - RFC 2119; RFC 7493; RFC 7515; RFC 8032; RFC 8174; RFC 8785.
