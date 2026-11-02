@@ -1,4 +1,4 @@
-"""Work-acceptance record verifier, profile 1.4.2 (schema trilatic.acceptance-receipt/1.2).
+"""Work-acceptance record verifier, profile 1.4.3 (schema trilatic.acceptance-receipt/1.2).
 
 Reference verifier using only the Python standard library. It implements Ed25519 (with the profile 1.3 key rule), canonical-input and strict-time rules of profile 1.4.2 (WAR_VERIFY_STRICT=1 re-raises an internal error instead of refusing),
 JCS (RFC 8785), the RFC 3161 imprint, time and accuracy read from the token's signed TSTInfo, and (profile 1.4)
@@ -873,20 +873,28 @@ def uint_val(node):
 
 
 def parse_time(node):
+    """DER UTCTime / GeneralizedTime as a UTC datetime, or ValueError. Fields are exactly two (year of a UTCTime) or four
+    ASCII digits and two ASCII digits each for month, day, hour, minute, second; a fraction is '.' followed by one or more
+    ASCII digits (no sign, separator or blank); the calendar must be real (second 60, Feb 30, hour 24 are refused)."""
     s = node.val.decode("ascii")
     if node.tag == 0x17:  # UTCTime
-        fmt = "%y%m%d%H%M%SZ" if len(s) == 13 else "%y%m%d%H%MZ"
-        d = datetime.strptime(s, fmt)
-        # RFC 5280: YY >= 50 -> 19YY, else 20YY (strptime pivots at 69)
-        yy = int(s[:2])
-        d = d.replace(year=(1900 + yy) if yy >= 50 else (2000 + yy))
+        m = re.fullmatch(r"(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)?Z", s, re.ASCII)
+        if not m:
+            raise ValueError("not a time")
+        yy = int(m.group(1))
+        # RFC 5280: YY >= 50 -> 19YY, else 20YY
+        d = datetime(
+            (1900 + yy) if yy >= 50 else (2000 + yy),
+            *[int(g) for g in m.group(2, 3, 4, 5)],
+            int(m.group(6) or 0),
+        )
     elif node.tag == 0x18:  # GeneralizedTime
-        base, frac = s.rstrip("Z"), ""
-        if "." in base:
-            base, frac = base.split(".", 1)
-        d = datetime.strptime(base, "%Y%m%d%H%M%S")
-        if frac:
-            d = d.replace(microsecond=int((frac + "000000")[:6]))
+        m = re.fullmatch(r"(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(?:\.([0-9]+))?Z*", s, re.ASCII)
+        if not m:
+            raise ValueError("not a time")
+        d = datetime(*[int(g) for g in m.group(1, 2, 3, 4, 5, 6)])
+        if m.group(7):
+            d = d.replace(microsecond=int((m.group(7) + "000000")[:6]))
     else:
         raise ValueError("not a time")
     return d.replace(tzinfo=timezone.utc)
