@@ -1,5 +1,5 @@
 {
- "description": "committed_at is 12:00:00Z and the criteria token genTime is 12:00:00.5Z. CRITERIA_TIME_MISMATCH compares to the precision of committed_at, so there is no mismatch.",
+ "description": "committed_at is 12:00:00Z and the criteria token genTime is 12:00:00.5Z. CRITERIA_TIME_MISMATCH compares committed_at with the genTime date and time to the second, without the fraction, so there is no mismatch.",
  "expected": {
   "criteria_committed_before_check": "yes",
   "criteria_hash": "match",
