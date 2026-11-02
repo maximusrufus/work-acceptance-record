@@ -889,7 +889,7 @@ def parse_time(node):
             int(m.group(6) or 0),
         )
     elif node.tag == 0x18:  # GeneralizedTime
-        m = re.fullmatch(r"(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(?:\.([0-9]+))?Z*", s, re.ASCII)
+        m = re.fullmatch(r"(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(?:\.([0-9]*[1-9]))?Z", s, re.ASCII)
         if not m:
             raise ValueError("not a time")
         d = datetime(*[int(g) for g in m.group(1, 2, 3, 4, 5, 6)])
