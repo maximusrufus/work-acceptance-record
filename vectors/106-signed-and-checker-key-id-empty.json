@@ -1,5 +1,5 @@
 {
- "description": "The signed receipt.key_id, the envelope signature.key_id and parties.checker.key_id are all the empty string, and the record states independence. No key is named: SIGNATURE_INVALID. The checker identifier equals the identifier the signature was checked under (both empty), so there is no CHECKER_NOT_SIGNER; independence cannot rest on keys and is derived as self-checked, which differs from the claim: INDEPENDENCE_INCONSISTENT.",
+ "description": "The signed receipt.key_id, the envelope signature.key_id and parties.checker.key_id are all the empty string, and the record claims independent. No key is named: SIGNATURE_INVALID. The checker identifier equals the identifier the signature was checked under (both empty), so there is no CHECKER_NOT_SIGNER (the exception to vector 103); no key is named, so derived independence is still self-checked, which differs from the claim: INDEPENDENCE_INCONSISTENT.",
  "expected": {
   "criteria_committed_before_check": "yes",
   "criteria_hash": "match",

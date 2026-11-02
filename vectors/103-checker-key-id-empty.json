@@ -1,5 +1,5 @@
 {
- "description": "parties.checker.key_id is the empty string. It names no listed key: derived independence is self-checked and CHECKER_NOT_SIGNER is raised (and INDEPENDENCE_INCONSISTENT, because the record states independent).",
+ "description": "parties.checker.key_id is the empty string. It names no listed key: derived independence is self-checked and CHECKER_NOT_SIGNER is raised (and INDEPENDENCE_INCONSISTENT, because the record claims independent).",
  "expected": {
   "criteria_committed_before_check": "yes",
   "criteria_hash": "match",
