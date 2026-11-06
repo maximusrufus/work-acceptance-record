@@ -429,6 +429,13 @@ def _typed_inputs(vec):
     for k in ("criteria_file_base64", "criteria_tsr_base64", "receipt_tsr_base64"):
         if not _t_str(i.get(k)):
             return False
+    rp = i.get("relying_party_keys")
+    if rp is not None and not (
+        isinstance(rp, dict)
+        and isinstance(rp.get("keys"), list)
+        and all(isinstance(k, dict) and _t_str(k.get("public_key_base64")) for k in rp["keys"])
+    ):
+        return False
     roots = i.get("tsa_roots_base64")
     if roots is not None and not (isinstance(roots, list) and all(isinstance(r, str) for r in roots)):
         return False
@@ -483,7 +490,7 @@ def _key_bad(keyset, *kids):
     return any(kid and _key_of(keyset, kid) is False for kid in kids)
 
 
-def independence_of(parties, keyset=None, claimed=None):
+def independence_of(parties, keyset=None, claimed=None, rp_keys=None):
     chk = (parties or {}).get("checker") or {}
     prod = (parties or {}).get("producer") or {}
     name = str(prod.get("name") or "").strip().lower()
@@ -502,7 +509,20 @@ def independence_of(parties, keyset=None, claimed=None):
         # An independence claim rests on keys only when a key_id is STATED: a stated key_id must be non-empty and listed
         # exactly once. An absent or null key_id (a producer does not sign) leaves the claim resting on the names.
         return "self-checked"
+    if claimed == "independent" and rp_keys is not None and prod.get("key_id") is not None:
+        # Profile 1.4.5: with the relying party's own key list supplied, the producer's key counts only when that list
+        # holds the same decoded key. A key found only in the issuer's response does not establish the producer's key.
+        pk = _key_of(keyset, prod.get("key_id"))
+        if not any(_key_bytes_or_none(k) == pk for k in rp_keys.get("keys") or []):
+            return "self-checked"
     return "independent"
+
+
+def _key_bytes_or_none(entry):
+    try:
+        return b64_strict(entry.get("public_key_base64"))
+    except Exception:
+        return None
 
 
 def _no_constant(name):
@@ -529,7 +549,7 @@ def _id_pairs(items, cd=None):
     return sorted(out, key=lambda p: (p[0].encode("utf-16-be", "surrogatepass"), p[1]))
 
 
-def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None):
+def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None, rp_keys=None):
     b = doc["receipt"]
     problems, warnings = set(), set()
     if out.get("key_rejected"):
@@ -546,7 +566,7 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None):
         problems.add("CHECKER_NOT_SIGNER")
     if _same_key(keyset, chk.get("key_id"), prod.get("key_id")):
         problems.add("KEY_COLLISION")
-    derived = independence_of(parties, keyset, b.get("independence"))
+    derived = independence_of(parties, keyset, b.get("independence"), rp_keys)
     out["independence"] = b.get("independence")
     if derived != b.get("independence"):
         problems.add("INDEPENDENCE_INCONSISTENT")
@@ -650,7 +670,7 @@ def _key_bytes(entry):
 
 
 def verify_receipt(
-    doc, keyset, criteria_bytes=None, criteria_tsr=None, receipt_tsr=None
+    doc, keyset, criteria_bytes=None, criteria_tsr=None, receipt_tsr=None, rp_keys=None
 ):
     out = {
         "signature": None,
@@ -714,7 +734,7 @@ def verify_receipt(
                 token_accuracy_ms=r["accuracy_ms"] if r["imprint"] else None,
             )
     if doc["receipt"].get("schema") == SCHEMA_V12:
-        _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset)
+        _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset, rp_keys)
     elif out.get("key_rejected"):
         out["problem_codes"] = ["KEY_REJECTED"]
     elif not out["signature"]:
@@ -1646,6 +1666,7 @@ def _vector_outcome(vec, tsa_roots=None):
         b64("criteria_file_base64"),
         b64("criteria_tsr_base64"),
         b64("receipt_tsr_base64"),
+        i.get("relying_party_keys"),
     )
     ts = v["timestamp"]
     out = {
