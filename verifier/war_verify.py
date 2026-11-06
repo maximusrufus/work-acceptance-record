@@ -512,8 +512,10 @@ def independence_of(parties, keyset=None, claimed=None, rp_keys=None):
     if claimed == "independent" and rp_keys is not None and prod.get("key_id") is not None:
         # Profile 1.4.5: with the relying party's own key list supplied, the producer's key counts only when that list
         # holds the same decoded key. A key found only in the issuer's response does not establish the producer's key.
+        # A key no one holds (the neutral point or any small-order point) is a shared value, not the producer's key:
+        # matching it shows nothing, so such a key fails closed (profile 1.4.7; 114, 115).
         pk = _key_of(keyset, prod.get("key_id"))
-        if not any(_key_bytes_or_none(k) == pk for k in rp_keys.get("keys") or []):
+        if not key_is_canonical_prime_order(pk) or not any(_key_bytes_or_none(k) == pk for k in rp_keys.get("keys") or []):
             return "self-checked"
     return "independent"
 
