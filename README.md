@@ -232,4 +232,4 @@ To be listed, open an issue here that links your code and a run file at a publis
 Draft, offered for the evidence-record discussion in x402-foundation/tsc#4 and referenced by ACP SEP #303 (Section 7.4a). Independent clean-room
 implementations are welcome; please report any disagreement with a vector's `expected` outcome as an issue.
 
-Licence: text CC BY 4.0; vectors and verifier code CC0 1.0.
+Licence: verifier code Apache-2.0 (`LICENSE`); vectors CC0 1.0; text CC BY 4.0. See `LICENSES.md`.
