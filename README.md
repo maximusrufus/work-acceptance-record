@@ -45,7 +45,7 @@ work-acceptance record by digest, so "the checker found X" and "the counterparty
     - *Checker.* Another identifier listed for the signer's own key names the signer: `CHECKER_NOT_SIGNER` (100). A stated checker identifier that is empty or not listed gives `self-checked`, `CHECKER_NOT_SIGNER` and, when the record claims independent, `INDEPENDENCE_INCONSISTENT` (103); for a stated producer identifier that is empty or not listed only `INDEPENDENCE_INCONSISTENT` results (80, 81). If the signed `key_id` and the checker's are both empty they are equal, so there is no `CHECKER_NOT_SIGNER`: `SIGNATURE_INVALID` and, when the record claims independent, `INDEPENDENCE_INCONSISTENT` (106, the exception to the rule above; derived independence is still `self-checked`, and no key is named).
     - *Types.* A wrong-typed `timestamp.digest_sha256` in the unsigned envelope, or `receipt.payment` and its members, is noted, not refused: no problem or warning code is reported and the outcome has no member for the note (101, 102). These two members are an exception to the wrong-type refusal rule (77).
 
-12. **Profile 1.4.5: the relying party's keys** (vectors 110-111; no outcome of vectors 01-109 changes). `keys` is the key file the issuer serves. A relying party may also supply `relying_party_keys`, a key list it obtained itself, outside the issuer's response (for example from the producer's own key document). When it is supplied, the record claims `independent` and the producer states a `key_id`, the producer's key counts only when `relying_party_keys` holds the same decoded key; otherwise derived independence is `self-checked` and the record is `INDEPENDENCE_INCONSISTENT` (110, 111). A producer key found only in the issuer's response, listed or used to sign, does not establish the producer's key. Without `relying_party_keys` the rule is not applied, and `keys` is read as the relying party's list, as before. Where the key came from shows who controls it, not that its holder is a party other than the issuer.
+12. **Profile 1.4.5: the relying party's keys** (vectors 110-111; no outcome of vectors 01-109 changes). `keys` is the key file the issuer serves. A relying party may also supply `relying_party_keys`, a key list it obtained itself, outside the issuer's response (for example from the producer's own key document). When it is supplied, the record claims `independent` and the producer states a `key_id`, the producer's key counts only when `relying_party_keys` holds the same decoded key; otherwise derived independence is `self-checked` and the record is `INDEPENDENCE_INCONSISTENT` (110, 111). Entries compare as decoded bytes under step 2's canonical-base64 rule; an entry that does not decode matches nothing (112). A producer key found only in the issuer's response, listed or used to sign, does not establish the producer's key. Without `relying_party_keys` the rule is not applied, and `keys` is read as the relying party's list, as before. Where the key came from shows who controls it, not that its holder is a party other than the issuer.
 ## Vectors (`vectors/`, CC0)
 | file | case |
 |---|---|
@@ -160,6 +160,7 @@ work-acceptance record by digest, so "the checker found X" and "the counterparty
 | 109-independent-claim-no-producer-object.json | as 20, with no `producer` member: `INDEPENDENCE_INCONSISTENT`; warning `PRODUCER_UNDECLARED`; independence `independent` (the stated value). |
 | 110-producer-key-only-in-issuer-keys.json | independence claimed; the producer's key is in the issuer's `keys` but not in `relying_party_keys`: `INDEPENDENCE_INCONSISTENT` (derived `self-checked`). |
 | 111-producer-key-also-in-relying-party-keys.json | as 110, with the producer's key also in `relying_party_keys`: no problems, no warnings. |
+| 112-relying-party-key-non-canonical-base64.json | as 111, with the producer's entry in `relying_party_keys` in non-canonical base64 (same bytes under a lenient decode): the entry matches nothing, `INDEPENDENCE_INCONSISTENT`. |
 
 Each file contains its inputs and an `expected` object with the outcome an independent verifier should reproduce. The keys in the vectors are test keys:
 never trust them. The timestamp tokens in the vectors are imprint-and-time fixtures, not valid RFC 3161 tokens: their SignedData has no SignerInfo, so OpenSSL and other CMS parsers that require a signer refuse them. They test imprint and time handling only. Vectors 31-36 instead carry real RFC 3161 tokens (FreeTSA and DigiCert, fetched 2026-10-20), and 37-46 (except 43) tokens from a test-only PKI (openssl 3.5, re-signed at a fixed genTime; the test root is not a real authority), and relying-party anchors in `inputs.tsa_roots_base64`.
@@ -185,7 +186,7 @@ and changes no outcome:
 
 It prints `AGREE` or `DIFF` per vector and exits non-zero on any disagreement; `--outcome FILE` prints the computed outcome object. It checks token imprints, times and accuracy; the authority signature (step 9) is evaluated when anchors are supplied, from a vector's `inputs.tsa_roots_base64` or `--tsa-roots FILE`. It is offered as a reference for comparison; clean-room verifiers that disagree with it, or with a vector's `expected` object, are the useful result.
 
-The file `verifier/war_verify.py` implements profile 1.4.5 and agrees with all 111 vectors. With `WAR_VERIFY_STRICT=1` an internal error is raised instead of being reported as a refusal.
+The file `verifier/war_verify.py` implements profile 1.4.5 and agrees with all 112 vectors. With `WAR_VERIFY_STRICT=1` an internal error is raised instead of being reported as a refusal.
 
 ## Implementations
 
@@ -213,7 +214,7 @@ pass the reference verifier unchanged, with `--tsa-roots` set to the FreeTSA and
 To be listed, open an issue here that links your code and a run file at a published commit.
 
 ## Changelog
-**Profile 1.4.5 (2026-11-05; schema identifier unchanged).** Step 12 adds the optional input `relying_party_keys`: with it, an independence claim needs the producer's key in a list the relying party obtained outside the issuer's response (issue #5). Vectors 110-111 pin it; no outcome of vectors 01-109 changes.
+**Profile 1.4.5 (2026-11-05; schema identifier unchanged).** Step 12 adds the optional input `relying_party_keys`: with it, an independence claim needs the producer's key in a list the relying party obtained outside the issuer's response (issue #5). Vectors 110-111 pin it; no outcome of vectors 01-109 changes. Vector 112 (2026-11-06) pins that `relying_party_keys` entries compare as canonically decoded bytes (issue #5).
 
 **Profile 1.4.4 (2026-11-04; schema identifier unchanged).** Step 8 states how independence is derived and that the outcome member `independence` and the warning `SELF_CHECKED` follow the stated value, prompted by readings of vectors 13 and 20 from a clean-room verifier. Vectors 108-109 pin both readings; no outcome of vectors 01-107 changes.
 
