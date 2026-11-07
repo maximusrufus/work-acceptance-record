@@ -103,7 +103,8 @@ def verify_ed25519(sig, msg, pub):
     if len(sig) != 64 or len(pub) != 32:
         return False
     A, R = _decode_point(pub), _decode_point(sig[:32])
-    if not A or not R:
+    # R must be a canonical point of prime order, as the key is (profile 1.4.8; 116)
+    if not A or not R or not key_is_canonical_prime_order(sig[:32]):
         return False
     S = int.from_bytes(sig[32:], "little")
     if S >= L:
@@ -531,6 +532,13 @@ def _no_constant(name):
     raise ValueError("NaN and Infinity are not valid JSON")
 
 
+def _no_duplicate_names(pairs):
+    """A criteria file whose object repeats a member name is unreadable (profile 1.4.8; 117)."""
+    if len({k for k, _ in pairs}) != len(pairs):
+        raise ValueError("duplicate member name")
+    return dict(pairs)
+
+
 def _id_pairs(items, cd=None):
     """Sorted (id, required) pairs, duplicates kept, ids ordered by UTF-16 code units. Ill-typed items raise
     ValueError (the criteria file could not be read)."""
@@ -597,8 +605,12 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None, rp_keys=None
         else:
             try:
                 cd = json.loads(
-                    criteria_bytes.decode("utf-8"), parse_constant=_no_constant
+                    criteria_bytes.decode("utf-8"),
+                    parse_constant=_no_constant,
+                    object_pairs_hook=_no_duplicate_names,
                 )
+                if _has_lone_surrogate(cd):  # profile 1.4.8 (118)
+                    raise ValueError("lone surrogate")
                 want = _id_pairs(cd.get("criteria"), cd)
                 got = _id_pairs(results)
                 if (
