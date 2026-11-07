@@ -222,7 +222,7 @@ pass the reference verifier unchanged, with `--tsa-roots` set to the FreeTSA and
 To be listed, open an issue here that links your code and a run file at a published commit.
 
 ## Changelog
-**Profile 1.4.9 (2026-11-07; errata; schema identifier unchanged).** Text corrections only: no requirement, reference verifier code or vector outcome changes. The header names the current profile; step 12 cites the canonical-base64 rule at step 10; Reported by robertolocatelli81-dev. Errata to vector descriptions (vector files unchanged, so their bytes stay as at 1.4.8): in 113, read "is not KEY_COLLISION" as "is not KEY_REJECTED" (the repeated-identifier rule of 75 and 79 concerns the issuer's keys); in 116, read "(step 5)" as "(step 2)".
+**Profile 1.4.9 (2026-11-07; errata; schema identifier unchanged).** Text corrections only: no requirement, reference verifier code or vector outcome changes. The header names the current profile; step 12 cites the canonical-base64 rule at step 10. Reported by robertolocatelli81-dev. Errata to vector descriptions (vector files unchanged, so their bytes stay as at 1.4.8): in 113, read "is not KEY_COLLISION" as "is not KEY_REJECTED" (the repeated-identifier rule of 75 and 79 concerns the issuer's keys); in 116, read "(step 5)" as "(step 2)".
 
 **Profile 1.4.8 (2026-11-06; schema identifier unchanged).** Procedure step 2: in addition to RFC 8032 verification, the signature's R must be a canonical point of prime order (vector 116). Procedure step 4 documents `CRITERIA_UNREADABLE`, already reported by the reference verifier, and adds two triggers: a repeated member name and a lone surrogate (vectors 117-118). No outcome of vectors 01-115 changes.
 
