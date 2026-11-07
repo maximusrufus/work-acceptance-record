@@ -532,6 +532,28 @@ def _no_constant(name):
     raise ValueError("NaN and Infinity are not valid JSON")
 
 
+def _ijson_int(s):
+    """An integer outside +-(2^53-1) is unreadable, as in I-JSON (RFC 7493; profile 1.4.11; 122)."""
+    n = int(s)
+    if abs(n) > 2**53 - 1:
+        raise ValueError("integer outside +-(2^53-1)")
+    return n
+
+
+def _ijson_float(s):
+    """A number that overflows to infinity is unreadable (profile 1.4.11; 123)."""
+    f = float(s)
+    if f in (float("inf"), float("-inf")):
+        raise ValueError("number overflows")
+    return f
+
+
+def _depth(o, level=0):
+    """The deepest level of any value, scalar or container; the root is level 0 (profile 1.4.11)."""
+    kids = o.values() if isinstance(o, dict) else o if isinstance(o, list) else ()
+    return max((_depth(v, level + 1) for v in kids), default=level)
+
+
 def _no_duplicate_names(pairs):
     """A criteria file whose object repeats a member name is unreadable (profile 1.4.8; 117)."""
     if len({k for k, _ in pairs}) != len(pairs):
@@ -608,9 +630,13 @@ def _check_v12(doc, out, criteria_bytes, criteria_tsr, keyset=None, rp_keys=None
                     criteria_bytes.decode("utf-8"),
                     parse_constant=_no_constant,
                     object_pairs_hook=_no_duplicate_names,
+                    parse_int=_ijson_int,
+                    parse_float=_ijson_float,
                 )
                 if _has_lone_surrogate(cd):  # profile 1.4.8 (118)
                     raise ValueError("lone surrogate")
+                if _depth(cd) > 64:  # profile 1.4.11 (124-126): no value more than 64 levels below the root
+                    raise ValueError("nesting deeper than 64")
                 want = _id_pairs(cd.get("criteria"), cd)
                 got = _id_pairs(results)
                 if (

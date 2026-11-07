@@ -1,0 +1,134 @@
+{
+ "contributed_by": "Trilatic (CC0)",
+ "description": "As 01, with an added member whose value 1e400 overflows a double to infinity; the hash matches the record. Infinity is no JSON value: CRITERIA_UNREADABLE.",
+ "expected": {
+  "criteria_committed_before_check": "yes",
+  "criteria_hash": "match",
+  "independence": "independent",
+  "problem_codes": [
+   "CRITERIA_UNREADABLE"
+  ],
+  "receipt_timestamp": "imprint_match",
+  "signature_valid": true,
+  "verdict_recomputed": "pass",
+  "verdict_stated": "pass",
+  "warning_codes": []
+ },
+ "inputs": {
+  "criteria_file_base64": "eyJjcml0ZXJpYSI6W3siaWQiOiJjMSIsInJlcXVpcmVkIjp0cnVlLCJyZXF1aXJlbWVudCI6IlRoZSBmaXJzdCByZXF1aXJlbWVudC4iLCJ0aXRsZSI6IkZpcnN0IHJlcXVpcmVkIGNyaXRlcmlvbiJ9LHsiaWQiOiJjMiIsInJlcXVpcmVkIjp0cnVlLCJyZXF1aXJlbWVudCI6IlRoZSBzZWNvbmQgcmVxdWlyZW1lbnQuIiwidGl0bGUiOiJTZWNvbmQgcmVxdWlyZWQgY3JpdGVyaW9uIn0seyJpZCI6ImMzIiwicmVxdWlyZWQiOmZhbHNlLCJyZXF1aXJlbWVudCI6IkFuIG9wdGlvbmFsIHJlcXVpcmVtZW50LiIsInRpdGxlIjoiT3B0aW9uYWwgY3JpdGVyaW9uIn1dLCJjcml0ZXJpYV9zZXQiOiJleGFtcGxlLWNyaXRlcmlhIiwicmVzdWx0X3ZvY2FidWxhcnkiOlsicGFzcyIsImZhaWwiLCJub3QtZXZhbHVhdGVkIiwiZXJyb3IiXSwidGl0bGUiOiJFeGFtcGxlIGNyaXRlcmlhIGZvciB0ZXN0IHZlY3RvcnMiLCJ2ZXJzaW9uIjoiMSIsIm5vdGVfd2VpZ2h0IjoxZTQwMH0=",
+  "criteria_tsr_base64": "MH8wAwIBADB4BgkqhkiG9w0BBwKgazBpAgEDMQAwYgYLKoZIhvcNAQkQAQSgUwRRME8CAQEGAyoDBDAxMA0GCWCGSAFlAwQCAQUABCDQZVUqnBlizt23S7EgQhEDE8luDefC4W8nowPxdtRKnwIBBxgPMjAyNjAzMDEwMDAwMDBa",
+  "keys": {
+   "issuer": "Example Checker (test vectors)",
+   "keys": [
+    {
+     "alg": "Ed25519",
+     "key_id": "spec-test-2f2dfa2f",
+     "public_key_base64": "IG8NU3Wa4RNk++CwdHYLlfOxAtwRl2hz0hJKfLgZyJk=",
+     "status": "test"
+    }
+   ]
+  },
+  "receipt": {
+   "receipt": {
+    "canonicalization": "JCS-RFC8785",
+    "client_ref": "test vector",
+    "criteria": {
+     "commitment": "rfc3161",
+     "committed_at": "2026-03-01T00:00:00Z",
+     "id": "example-criteria",
+     "sha256": "d065552a9c1962ceddb74bb12042110313c96e0de7c2e16f27a303f176d44a9f",
+     "version": "1"
+    },
+    "files": {
+     "original": {
+      "bytes": 22,
+      "name": "original.pdf",
+      "pages": 1,
+      "sha256": "4cbaf696bbf09c7f9c08d2fc5cb4e93235d0d9ff94a916b7dd90b91ef057e4be"
+     },
+     "remediated": {
+      "bytes": 23,
+      "name": "delivered.pdf",
+      "pages": 1,
+      "sha256": "b520ef4eb7a0f3e0d725ea92167e4962fe43584c7747b44e0acd4d846eaa4cf8"
+     }
+    },
+    "human_review": {
+     "scope": [
+      "Example review scope"
+     ],
+     "status": "pending"
+    },
+    "independence": "independent",
+    "issued_utc": "2026-06-01T12:00:00Z",
+    "issuer": "Example Checker",
+    "key_id": "spec-test-2f2dfa2f",
+    "notice": "Test vector. Not a real check.",
+    "parties": {
+     "checker": {
+      "key_id": "spec-test-2f2dfa2f",
+      "name": "Example Checker"
+     },
+     "producer": {
+      "key_id": null,
+      "name": "Example Vendor"
+     }
+    },
+    "receipt_id": "EX-0001",
+    "results": [
+     {
+      "finding": "Met.",
+      "id": "c1",
+      "required": true,
+      "result": "pass",
+      "title": "First required criterion"
+     },
+     {
+      "finding": "Met.",
+      "id": "c2",
+      "required": true,
+      "result": "pass",
+      "title": "Second required criterion"
+     },
+     {
+      "finding": "No review recorded.",
+      "id": "c3",
+      "required": false,
+      "result": "not-evaluated",
+      "title": "Optional criterion"
+     }
+    ],
+    "revision": 1,
+    "schema": "trilatic.acceptance-receipt/1.2",
+    "suite": {
+     "digest": "sha-256",
+     "signature": "Ed25519"
+    },
+    "tools": {
+     "profile": "example profile",
+     "validator": "example 1.0"
+    },
+    "verdict": "pass"
+   },
+   "signature": {
+    "alg": "Ed25519",
+    "key_id": "spec-test-2f2dfa2f",
+    "value": "YEs8I6wIAO6b2QJ9VrBFEmlP1mqGusFHpLHHoAHLtGShcAx4+z8t2tw3SCK1PSdSqIztlBI8dy4Uhwl0tvHgDQ=="
+   },
+   "timestamp": {
+    "covers": "sha256 of the canonical receipt object",
+    "digest_sha256": "e69f9920de8a16f356423a7101e4524a1a56a92276bf2eb4192bee9d9c9701c4",
+    "gen_time": "20260601120005Z",
+    "status": "granted",
+    "tsa": "test-tsa.invalid",
+    "tsr_file": "receipt.tsr"
+   }
+  },
+  "receipt_tsr_base64": "MH8wAwIBADB4BgkqhkiG9w0BBwKgazBpAgEDMQAwYgYLKoZIhvcNAQkQAQSgUwRRME8CAQEGAyoDBDAxMA0GCWCGSAFlAwQCAQUABCDmn5kg3ooW81ZCOnEB5FJKGlapIna/LrQZK+6dnJcBxAIBBxgPMjAyNjA2MDExMjAwMDVa"
+ },
+ "license": "CC0-1.0",
+ "spec": "acceptance record, schema trilatic.acceptance-receipt/1.2",
+ "title": "Criteria file holds a number that overflows",
+ "vector": "123-criteria-file-number-overflows",
+ "warning": "Signed with a published TEST key. Never trust a record signed by it."
+}
