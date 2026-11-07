@@ -1,6 +1,6 @@
 {
  "contributed_by": "Trilatic (CC0)",
- "description": "As 111, with relying_party_keys listing the producer's key_id twice: first with another key, then with the producer's key. Entries are matched by decoded key bytes, not by key_id, so the second entry holds the same key and the claim stands. No problems, no warnings; a repeated key_id in relying_party_keys is not KEY_REJECTED (the repeated-identifier rule of 75 and 79 concerns the issuer's keys).",
+ "description": "As 111, with relying_party_keys listing the producer's key_id twice: first with another key, then with the producer's key. Entries are matched by decoded key bytes, not by key_id, so the second entry holds the same key and the claim stands. No problems, no warnings; a repeated key_id in relying_party_keys is not KEY_COLLISION (that rule concerns the issuer's keys).",
  "expected": {
   "criteria_committed_before_check": "yes",
   "criteria_hash": "match",

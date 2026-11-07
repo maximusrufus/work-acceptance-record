@@ -1,6 +1,6 @@
 {
  "contributed_by": "Trilatic (CC0)",
- "description": "As 01, with the signature's R the neutral point (01 00..00) and S = h*a mod L, so S*B = R + h*A holds. R must be a canonical point of prime order, as the key must be (step 2): the signature is not valid. A verifier that checks only the equation accepts it.",
+ "description": "As 01, with the signature's R the neutral point (01 00..00) and S = h*a mod L, so S*B = R + h*A holds. R must be a canonical point of prime order, as the key must be (step 5): the signature is not valid. A verifier that checks only the equation accepts it.",
  "expected": {
   "criteria_committed_before_check": "yes",
   "criteria_hash": "match",
