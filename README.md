@@ -177,6 +177,8 @@ work-acceptance record by digest, so "the checker found X" and "the counterparty
 | 126-criteria-file-scalar-at-level-65.json | as 01, with a number 65 levels below the root of the criteria file; the hash matches: `CRITERIA_UNREADABLE`. |
 | 127-criteria-file-noncharacter-in-string.json | as 01, with a string value U+FFFE in the criteria file; the hash matches: readable, no problems. |
 | 128-criteria-file-noncharacter-in-member-name.json | as 01, with a member name U+FDD0 in the criteria file; the hash matches: readable, no problems. |
+| 129-criteria-file-control-character-escaped.json | as 01, with a string value holding the escape `\u0007` in the criteria file; the hash matches: readable, no problems. |
+| 130-criteria-file-control-character-raw.json | as 129, with U+0007 written as a raw byte instead of an escape (not JSON, RFC 8259 section 7); the hash matches: `CRITERIA_UNREADABLE`. |
 
 Each file contains its inputs and an `expected` object with the outcome an independent verifier should reproduce. The keys in the vectors are test keys:
 never trust them. The timestamp tokens in the vectors are imprint-and-time fixtures, not valid RFC 3161 tokens: their SignedData has no SignerInfo, so OpenSSL and other CMS parsers that require a signer refuse them. They test imprint and time handling only. Vectors 31-36 instead carry real RFC 3161 tokens (FreeTSA and DigiCert, fetched 2026-10-20), and 37-46 (except 43) tokens from a test-only PKI (openssl 3.5, re-signed at a fixed genTime; the test root is not a real authority), and relying-party anchors in `inputs.tsa_roots_base64`.
@@ -202,7 +204,7 @@ and changes no outcome:
 
 It prints `AGREE` or `DIFF` per vector and exits non-zero on any disagreement; `--outcome FILE` prints the computed outcome object. It checks token imprints, times and accuracy; the authority signature (step 9) is evaluated when anchors are supplied, from a vector's `inputs.tsa_roots_base64` or `--tsa-roots FILE`. It is offered as a reference for comparison; clean-room verifiers that disagree with it, or with a vector's `expected` object, are the useful result.
 
-The file `verifier/war_verify.py` implements profile 1.4.12 and agrees with all 128 vectors. With `WAR_VERIFY_STRICT=1` an internal error is raised instead of being reported as a refusal.
+The file `verifier/war_verify.py` implements profile 1.4.12 and agrees with all 130 vectors. With `WAR_VERIFY_STRICT=1` an internal error is raised instead of being reported as a refusal.
 
 ## Implementations
 
@@ -225,7 +227,7 @@ implementer's own run file at a fixed commit; the result and the disclosure are 
 | babyblueviper1 | Python, `cryptography` | 01-111 at `c4b4bd4` | 111/111 | [comment in issue #5](https://github.com/maximusrufus/work-acceptance-record/issues/5#issuecomment-6684763490); [run](https://github.com/babyblueviper1/preaction-governance-conformance/tree/da29d7e/examples/work-acceptance-record-cold) (`upstream_vectors_c4b4bd4_111_run.txt`) | written from the step 12 text and vectors 110-111; `verifier/` not opened; the commit message, its diffstat and the war-verify 1.4.5 result seen beforehand |
 | robertolocatelli81-dev | Python | 01-126 at `v1.4.11` (`8ce7f42`), plus one live record | 127/127 documents (1157/1157 fields) | [comment in x402-foundation/tsc#4](https://github.com/x402-foundation/tsc/issues/4#issuecomment-6763469305) | war-verify 0.12.0 (`ba53b5d`); written by agents that did not open `verifier/`, `interop/` or `composition/`; the inputs that were not independent are listed in its README |
 | robertolocatelli81-dev | Python | 01-128 at `v1.4.12` (`5f7517a`), plus one live record | 129/129 documents (1175/1175 fields) | [comment in x402-foundation/tsc#4](https://github.com/x402-foundation/tsc/issues/4#issuecomment-6779379335) | war-verify 0.12.0 (`6df465c`), `war_verify.py` byte-identical to `ba53b5d`; 127 and 128 read with a note outside the outcome fields; `--criteria-noncharacters unreadable` gives 127/129 |
-| reference (this repository) | Python standard library | 01-128 | 128/128 | `python -I verifier/war_verify.py vectors/*.json` | written with the vectors |
+| reference (this repository) | Python standard library | 01-130 | 130/130 | `python -I verifier/war_verify.py vectors/*.json` | written with the vectors |
 
 The other direction: receipts issued by another checker under its own key (babyblueviper1's invinoveritas checker)
 pass the reference verifier unchanged, with `--tsa-roots` set to the FreeTSA and DigiCert roots of vectors 31 and 32
@@ -234,6 +236,8 @@ pass the reference verifier unchanged, with `--tsa-roots` set to the FreeTSA and
 To be listed, open an issue here that links your code and a run file at a published commit.
 
 ## Changelog
+**Vectors 129-130 (2026-11-11; profile 1.4.12, text unchanged).** Control characters in the criteria file: an escaped one is readable (129); a raw one makes the file not JSON, so `CRITERIA_UNREADABLE` (130). Both follow from step 4 as written; no outcome of vectors 01-128 changes.
+
 **Profile 1.4.12 (2026-11-10; schema identifier unchanged).** Settles three questions raised by robertolocatelli81-dev (x402-foundation/tsc#4). Q36: the four cases of profile 1.4.11 are the I-JSON checks and the list is closed; a noncharacter in a member name or a string value is readable (127, 128). Q37: the integer limit applies to numbers written without fraction or exponent. Q38: a number overflows only when it rounds to an infinite double. Text only: vectors 01-126 and their outcomes are unchanged, and the reference verifier is unchanged.
 
 **Profile 1.4.11 (2026-11-07; schema identifier unchanged).** Settles two questions raised by robertolocatelli81-dev (x402-foundation/tsc#4). Q35: the criteria file is I-JSON (RFC 7493); a byte-order mark, an integer outside ±(2^53−1), a number that overflows and a value more than 64 levels below the root are `CRITERIA_UNREADABLE` (121-126); this replaces the 1.4.10 sentence that left them unspecified. Q31: the point rule for the producer's key applies only under step 12's conditions (119, 120). Vectors 01-118 and their outcomes are unchanged; the reference verifier adds the I-JSON number and depth checks.
