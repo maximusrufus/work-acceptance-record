@@ -6,6 +6,7 @@ what the report states; this repository has not run these implementations.
 | Implementation | Version | Profile | Vectors reported | Result reported | Report |
 |---|---|---|---|---|---|
 | Reference verifier (`verifier/war_verify.py`) | this tree | 1.4.12 | 01-128 | 128/128 agree | this repository |
+| war-verify (robertolocatelli81-dev) | 0.12.0, `6df465c` | 1.4.12 | 01-128, and the live record | 129/129 documents, 1175/1175 fields | x402-foundation/tsc#4, comment 6779379335 |
 | war-verify (robertolocatelli81-dev) | 0.12.0, `ba53b5d` | 1.4.11 | 01-126, and the live record | 127/127 documents, 1157/1157 fields | x402-foundation/tsc#4, comment 6763469305 |
 | war-verify (robertolocatelli81-dev) | 0.11.0, `7d9f528` | 1.4.8 | 01-118, and the live record | 119/119 documents, 1085/1085 fields | x402-foundation/tsc#4, comment 6709734788 |
 | VATE (Poke-nushi): runs the reference verifier inside VATE's receiver (not a separate implementation) | `3e53aac` pinned | 1.4.8 | 110-118 | match | issue #5 of this repository, comment 6705480005 |
