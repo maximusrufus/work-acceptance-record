@@ -5,7 +5,7 @@ what the report states; this repository has not run these implementations.
 
 | Implementation | Version | Profile | Vectors reported | Result reported | Reported on | Report |
 |---|---|---|---|---|---|---|
-| Reference verifier (`verifier/war_verify.py`) | this tree | 1.4.12 | 01-130 | 130/130 agree | 2026-11-11 | this repository |
+| Reference verifier (`verifier/war_verify.py`) | `c5f49b5` (verifier and vectors) | 1.4.12 | 01-130 | 130/130 agree | 2026-11-12 | `python -I verifier/war_verify.py vectors/*.json` in this repository |
 | war-verify (robertolocatelli81-dev) | 0.12.0, `6df465c` | 1.4.12 | 01-128, and the live record | 129/129 documents, 1175/1175 fields | 2026-11-10 | x402-foundation/tsc#4, comment 6779379335 |
 | war-verify (robertolocatelli81-dev) | 0.12.0, `ba53b5d` | 1.4.11 | 01-126, and the live record | 127/127 documents, 1157/1157 fields | 2026-11-10 | x402-foundation/tsc#4, comment 6763469305 |
 | war-verify (robertolocatelli81-dev) | 0.11.0, `7d9f528` | 1.4.8 | 01-118, and the live record | 119/119 documents, 1085/1085 fields | 2026-11-07 | x402-foundation/tsc#4, comment 6709734788 |
